@@ -1,11 +1,11 @@
-import "@mantine/core/styles.css";
-import Head from "next/head";
-import { MantineProvider } from "@mantine/core";
-import { theme } from "../theme";
+import '@mantine/core/styles.css';
+import Head from 'next/head';
+import { MantineProvider } from '@mantine/core';
+import customTheme from '@theme/custom';
 
 export default function App({ Component, pageProps }: any) {
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={customTheme}>
       <Head>
         <title>Mantine Template</title>
         <meta
