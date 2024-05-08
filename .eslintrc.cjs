@@ -13,6 +13,7 @@ module.exports = {
         'import/no-absolute-path': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'off',
+        'import/no-default-export': 'off',
         'no-underscore-dangle': ['error', {allow: ['_id']}] 
     },
 };
