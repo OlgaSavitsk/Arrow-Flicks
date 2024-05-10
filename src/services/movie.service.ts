@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export function getMovieList() {
-  return axios.get('/api/movie');
+export function getMovieList<T>(params: T) {
+  return axios.get('/api/movie', { params });
 }
 
 export function getGenreList() {
