@@ -1,6 +1,7 @@
 {
   "name": "mantine-minimal-next-template",
   "version": "0.1.0",
+  "types": "./src/types/index.ts",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,13 +12,16 @@
     "lint:fix": "yarn lint:scripts --fix"
   },
   "dependencies": {
-    "@mantine/core": "7.8.1",
-    "@mantine/hooks": "7.8.1",
+    "@mantine/core": "^7.9.1",
+    "@mantine/dates": "^7.9.1",
+    "@mantine/hooks": "^7.9.1",
     "@mantine/modals": "7.8.1",
     "axios": "1.6.8",
+    "dayjs": "^1.11.11",
     "next": "14.1.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "@types/node": "20.11.26",
@@ -25,7 +29,7 @@
     "@types/react-dom": "18.2.21",
     "@typescript-eslint/eslint-plugin": "7.0.0",
     "@typescript-eslint/parser": "7.0.0",
-    "arui-presets-lint": "^7.3.0",
+    "arui-presets-lint": "7.3.0",
     "eslint": "8.57.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "18.0.0",
@@ -41,9 +45,9 @@
     "typescript": "5.4.2"
   },
   "prettier": "arui-presets-lint/prettier",
-   "eslintConfig": {
-        "extends": "./node_modules/arui-presets-lint/eslint/index.js"
-    },
+  "eslintConfig": {
+    "extends": "./node_modules/arui-presets-lint/eslint/index.js"
+  },
   "stylelint": {
     "extends": "arui-presets-lint/stylelint"
   },

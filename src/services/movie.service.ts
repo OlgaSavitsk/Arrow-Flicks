@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getMovieList<T>(params: T) {
+export function getMovieList<T>(params?: T) {
   return axios.get('/api/movie', { params });
 }
 

@@ -1,4 +1,4 @@
 export enum RoutePath {
-  Home = '/home',
+  Home = '/',
   Rated = '/rated',
 }

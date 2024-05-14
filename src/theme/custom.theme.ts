@@ -1,5 +1,6 @@
 import { createTheme } from '@mantine/core';
 import { ButtonTheme } from './components';
+import '@mantine/dates/styles.css';
 
 import classes from './index.module.css';
 

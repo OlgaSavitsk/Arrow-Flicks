@@ -1,3 +1,17 @@
+export enum SortParams {
+  popularityAsc = 'popularity.asc',
+  popularityDesc = 'popularity.desc',
+  voteAverageAsc = 'vote_average.asc',
+  voteAverageDesc = 'vote_average.desc',
+  voteCountAsc = 'vote_count.asc',
+  voteCountDesc = 'vote_count.desc',
+}
+
+export enum VoteAvrg {
+  lte = 'vote_average.lte',
+  gte = 'vote_average.gte',
+}
+
 export type MovieRequestParams = {
   language: string,
   with_genres: string,

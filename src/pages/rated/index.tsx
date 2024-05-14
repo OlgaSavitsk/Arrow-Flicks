@@ -4,10 +4,7 @@ import { NextPage } from 'next';
 
 const RatedPage: NextPage = () => {
   useEffect(() => {
-    const fetch = async () => {
-      // const data = await movieApi.getMovieList();
-      // console.log('data', data);
-    };
+    const fetch = async () => {};
     fetch();
   }, []);
 

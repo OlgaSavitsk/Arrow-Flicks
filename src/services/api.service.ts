@@ -20,24 +20,17 @@ const getApiInstance = (axiosConfig: AxiosRequestConfig): AxiosInstance => {
     (config: InternalAxiosRequestConfig) => createHeaderConfig(config),
     (error: AxiosError): Promise<AxiosError> => Promise.reject(error),
   );
-  apiInstance.interceptors.response.use((response: AxiosResponse) => response.data);
+  apiInstance.interceptors.response.use((response: AxiosResponse) => response);
   return apiInstance;
 };
 
-export const baseApi = getApiInstance({
+const baseApi = getApiInstance({
   baseURL: `${process.env.API_BASE_URL}`,
 });
 
-const fetchData = async <T>(
-  url: string,
-  params: unknown = {},
-): Promise<T> => {
+const fetchData = async <T>(url: string, params: unknown = {}): Promise<T> => {
   try {
-    const response = await baseApi({
-      method: 'get',
-      url,
-      params,
-    });
+    const response = await baseApi({ method: 'get', url, params });
     return response.data;
   } catch (error: unknown) {
     if (isAxiosError(error)) {

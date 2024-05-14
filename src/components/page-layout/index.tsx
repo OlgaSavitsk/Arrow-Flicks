@@ -12,11 +12,11 @@ type PageLayoutProps = {
 const titleItems = {
   [RoutePath.Home]: {
     title: 'Movies',
-    action: <SearchComponent />,
+    action: null,
   },
   [RoutePath.Rated]: {
     title: 'Rated movies',
-    action: null,
+    action: <SearchComponent />,
   },
 };
 
