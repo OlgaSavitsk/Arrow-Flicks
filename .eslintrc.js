@@ -17,6 +17,7 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'import/no-default-export': 'off',
         'react/prop-types': 'off',
+        'default-param-last': 'off',
         'react/function-component-definition': [
             2,
             {

@@ -5,6 +5,7 @@ import customTheme from '@theme/custom.theme';
 import { ModalsProvider } from '@mantine/modals';
 import { MainLayout } from '@components/index';
 import { AppProps } from 'next/app';
+import { AppWrapper } from '@store/context';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <MantineProvider theme={customTheme}>
@@ -17,9 +18,11 @@ const App = ({ Component, pageProps }: AppProps) => (
         />
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
-      <MainLayout>
-        <Component {...pageProps} />
-      </MainLayout>
+      <AppWrapper>
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      </AppWrapper>
     </ModalsProvider>
   </MantineProvider>
 );

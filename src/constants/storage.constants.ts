@@ -1,11 +1,11 @@
 export enum LocalStorageKey {
-  authToken = 'access_token',
+  favorites = 'favorites',
 }
 
 export const DEFAULT_STORAGE_CONFIG: StorageConfig = {
-  accessToken: '',
+  favorites: [],
 };
 
 type StorageConfig = {
-  accessToken: string;
+  favorites: Array<number>
 };
