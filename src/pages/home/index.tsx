@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useAppContext } from '@hooks/use-context.hook';
+import { useAppContext } from '@hooks/index';
 import { appActions } from '@store/index';
-import { MovieRequestParams } from '@typing/movie.types';
-import FiltersBlock from './filters-block';
+import { MovieRequestParams } from '@typing/index';
+import { SimpleGrid } from '@mantine/core';
+import FiltersBlock from './components/filters-block';
 
 const HomePage = () => {
   const [params, setParams] = useState<Partial<MovieRequestParams>>();
-  const { state, dispatch } = useAppContext();
-  
+  const { dispatch } = useAppContext();
+
   useEffect(() => {
     setParams((prev) => ({
       ...prev,
@@ -17,7 +18,12 @@ const HomePage = () => {
   }, []);
 
   return (
-    <FiltersBlock />
+    <>
+      <FiltersBlock />
+      <SimpleGrid
+        cols={{ base: 1, sm: 1, lg: 2 }}
+      />
+    </>
   );
 };
 

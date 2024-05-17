@@ -15,9 +15,10 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'off',
+        'react/require-default-props': 'off',
         'import/no-default-export': 'off',
         'react/prop-types': 'off',
-        'default-param-last': 'off',
+        '@typescript-eslint/default-param-last': 'off',
         'react/function-component-definition': [
             2,
             {

@@ -1,5 +1,7 @@
 import { createTheme } from '@mantine/core';
-import { ButtonTheme } from './components';
+import {
+  ButtonTheme, ComboboxTheme, InputTheme, InputWrapperTheme, NumberInputTheme,
+} from './components';
 import '@mantine/dates/styles.css';
 
 import classes from './index.module.css';
@@ -37,6 +39,10 @@ const customTheme = createTheme({
   activeClassName: classes.active,
   components: {
     Button: ButtonTheme,
+    Input: InputTheme,
+    InputWrapper: InputWrapperTheme,
+    Select: ComboboxTheme,
+    NumberInput: NumberInputTheme,
   },
 });
 

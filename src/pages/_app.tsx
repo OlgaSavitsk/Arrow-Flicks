@@ -5,7 +5,7 @@ import customTheme from '@theme/custom.theme';
 import { ModalsProvider } from '@mantine/modals';
 import { MainLayout } from '@components/index';
 import { AppProps } from 'next/app';
-import { AppWrapper } from '@store/context';
+import { AppWrapper } from '@store/provider';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <MantineProvider theme={customTheme}>

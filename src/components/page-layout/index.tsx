@@ -1,7 +1,7 @@
 import SearchComponent from '@components/search';
 import { RoutePath } from '@constants/routes.constants';
 import {
-  Group, SimpleGrid, Stack, Title,
+  Group, Stack, Title,
 } from '@mantine/core';
 import { useRouter } from 'next/router';
 
@@ -31,11 +31,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
         <Title fz={32} fw={700}>{title}</Title>
         {action}
       </Group>
-      <SimpleGrid
-        cols={{ base: 1, sm: 1, lg: 2 }}
-      >
-        {children}
-      </SimpleGrid>
+
+      {children}
+
     </Stack>
   );
 };

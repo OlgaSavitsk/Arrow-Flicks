@@ -12,7 +12,7 @@ export const AppWrapper = ({ children }: {
   children: React.ReactNode
 }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const [{ favorites }] = useStorage(LocalStorageKey.favorites, DEFAULT_STORAGE_CONFIG);
+  const [storageState] = useStorage(LocalStorageKey.favorites, DEFAULT_STORAGE_CONFIG);
 
   const { params } = state;
 
@@ -29,8 +29,9 @@ export const AppWrapper = ({ children }: {
   }, [fetchMovies]);
 
   useEffect(() => {
-    if (favorites) {
-      dispatch(appActions.initStorage(favorites));
+    console.log('222', storageState.favorites);
+    if (storageState.favorites) {
+      dispatch(appActions.initStorage(storageState.favorites));
     }
   }, []);
 

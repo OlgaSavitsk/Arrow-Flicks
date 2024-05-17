@@ -10,14 +10,8 @@ const queryParamsSchema = z.object({
   primary_release_year: z.number().optional(),
   vote_average: z
     .object({
-      [VoteAvrg.lte]: z
-        .string()
-        .transform((a) => parseInt(a, 10))
-        .optional(),
-      [VoteAvrg.gte]: z
-        .string()
-        .transform((a) => parseInt(a, 10))
-        .optional(),
+      [VoteAvrg.lte]: z.number().lte(10).optional(),
+      [VoteAvrg.gte]: z.number().lte(10).optional(),
     })
     .optional(),
   sort_by: z.nativeEnum(SortParams).optional(),

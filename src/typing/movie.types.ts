@@ -42,11 +42,11 @@ type Result = {
   genre_ids: Array<number>
 };
 
-export type MovieList = {
+export type GenreListResponse = {
   genres: Array<Genre>
 };
 
-type Genre = {
+export type Genre = {
   id: number,
   name: string,
 };

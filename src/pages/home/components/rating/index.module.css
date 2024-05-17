@@ -1,0 +1,15 @@
+.controls {
+    border: none;
+
+    & button {
+        display: flex;
+        align-items: flex-end;
+        border: none;
+        stroke: var(--mantine-color-grey-4);
+        stroke-width: 1px;
+    }
+
+    & button:last-of-type {
+        align-items: flex-start;
+    }
+}
