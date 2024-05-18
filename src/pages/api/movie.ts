@@ -5,10 +5,10 @@ import { HttpStatusCode } from '@constants/index';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { API_KEY } = process.env;
-  const { params } = req.body;
-  const response = await fetchData(
-    `/discover/movie?api_key=${API_KEY}`,
-    params,
-  );
+  const params = req.query;
+  const response = await fetchData('/discover/movie', {
+    ...params,
+    api_key: `${API_KEY}`,
+  });
   res.status(HttpStatusCode.OK).json(response);
 }

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { HttpStatusCode } from './constants';
-import { SortParams, VoteAvrg } from './typing';
+import { SortParams } from './typing';
 
 const queryParamsSchema = z.object({
   language: z.string().default('en-US'),
@@ -10,8 +10,8 @@ const queryParamsSchema = z.object({
   primary_release_year: z.number().optional(),
   vote_average: z
     .object({
-      [VoteAvrg.lte]: z.number().lte(10).optional(),
-      [VoteAvrg.gte]: z.number().lte(10).optional(),
+      gte: z.number().lte(10).nullable(),
+      lte: z.number().lte(10).nullable(),
     })
     .optional(),
   sort_by: z.nativeEnum(SortParams).optional(),

@@ -15,13 +15,14 @@ export const AppWrapper = ({ children }: {
   const [storageState] = useStorage(LocalStorageKey.favorites, DEFAULT_STORAGE_CONFIG);
 
   const { params } = state;
+  const { favorites } = storageState;
 
   const appProviderValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
   const fetchMovies = useCallback(async () => {
     appProviderValue.dispatch(appActions.getMovies());
-    const { data } = await movieApi.getMovieList(params);
-    appProviderValue.dispatch(appActions.setMovies(data));
+    const { data: { results } } = await movieApi.getMovieList(params);
+    appProviderValue.dispatch(appActions.setMovies(results));
   }, [params]);
 
   useEffect(() => {
@@ -29,11 +30,10 @@ export const AppWrapper = ({ children }: {
   }, [fetchMovies]);
 
   useEffect(() => {
-    console.log('222', storageState.favorites);
-    if (storageState.favorites) {
-      dispatch(appActions.initStorage(storageState.favorites));
+    if (favorites) {
+      dispatch(appActions.initStorage(favorites));
     }
-  }, []);
+  }, [favorites]);
 
   return (
     <AppContext.Provider value={appProviderValue}>

@@ -3,13 +3,19 @@ import { YearPickerInput } from '@mantine/dates';
 import { Button, Grid, Select } from '@mantine/core';
 import { IconChevron, MultiSelectValueRenderer } from '@components/index';
 import { movieApi } from '@services/index';
+import { UseFormReturnType } from '@mantine/form';
+import { MovieRequestParams } from '@typing/movie.types';
 import { selectOptions } from '../../config/home.config';
 
 import classes from './index.module.css';
 import RatingComponent from '../rating';
 
-const FiltersBlock = () => {
-  const [value, setValue] = useState<string | null>(null);
+type FiltersBlockProps = {
+  form: UseFormReturnType<Partial<MovieRequestParams>>
+  onResetFilterValue: () =>void
+};
+
+const FiltersBlock: React.FC<FiltersBlockProps> = ({ form, onResetFilterValue }) => {
   const [genresList, setGenresList] = useState([]);
 
   const fetchMoviesList = useCallback(async () => {
@@ -24,7 +30,11 @@ const FiltersBlock = () => {
   return (
     <Grid align="flex-end" justify="flex-end">
       <Grid.Col span={{ base: 12, md: 6, lg: 'auto' }}>
-        <MultiSelectValueRenderer label="Genres" placeholder="Select genre" genresList={genresList} />
+        <MultiSelectValueRenderer
+          label="Genres"
+          placeholder="Select genre"
+          genresList={genresList}
+        />
       </Grid.Col>
 
       <Grid.Col span={{ base: 12, md: 6, lg: 'auto' }}>
@@ -34,15 +44,16 @@ const FiltersBlock = () => {
           size="md"
           rightSection={<IconChevron size={20} />}
           classNames={{ input: classes.input }}
+          {...form.getInputProps('primary_release_year')}
         />
       </Grid.Col>
 
       <Grid.Col span={{ base: 12, md: 6, lg: 'auto' }}>
-        <RatingComponent />
+        <RatingComponent form={form} />
       </Grid.Col>
 
       <Grid.Col span={{ base: 12, md: 6, lg: 'content' }}>
-        <Button variant="transparent" color="gray" fw={500} size="md">Reset filters</Button>
+        <Button variant="transparent" color="gray" fw={500} size="md" onClick={onResetFilterValue}>Reset filters</Button>
       </Grid.Col>
 
       <Grid.Col span={{ base: 12, md: 6, lg: 3.5 }} offset={8}>
@@ -50,13 +61,12 @@ const FiltersBlock = () => {
           label="Sort by"
           placeholder="Most popular"
           data={selectOptions}
-          value={value}
-          onChange={setValue}
           size="md"
           maxDropdownHeight={200}
           comboboxProps={{ position: 'bottom', transitionProps: { transition: 'fade', duration: 200 } }}
           rightSection={<IconChevron size={20} />}
           classNames={{ input: classes.input, option: classes.option }}
+          {...form.getInputProps('sort_by')}
         />
       </Grid.Col>
     </Grid>

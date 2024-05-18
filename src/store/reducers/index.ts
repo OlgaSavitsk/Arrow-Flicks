@@ -26,7 +26,7 @@ export const appReducer = <T>(
     case AppTypes.SET_PARAMS: {
       return {
         ...state,
-        params: payload as MovieRequestParams,
+        params: { ...state.params, ...payload } as MovieRequestParams,
       };
     }
     case AppTypes.INIT_STORAGE: {

@@ -1,15 +1,16 @@
+import { Genre } from '@typing/index';
 import classes from './index.module.css';
 
-interface CountryPillProps extends React.ComponentPropsWithoutRef<'div'> {
-  data: any[];
+interface PillProps extends React.ComponentPropsWithoutRef<'div'> {
+  data: Genre[];
   value: string;
   onRemove?: () => void;
 }
 
-export const CountryPill = ({
+export const PillComponent = ({
   value, onRemove, data, ...others
-}: CountryPillProps) => {
-  const genre = data && data.find((item: any) => item.name === value);
+}: PillProps) => {
+  const genre = data && data.find((item: Genre) => item.name === value);
 
   return (
     <div className={classes.pill} {...others}>

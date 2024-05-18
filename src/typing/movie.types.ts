@@ -14,16 +14,16 @@ export enum VoteAvrg {
 
 export type MovieRequestParams = {
   language: string,
+  page: number,
   with_genres: string,
   primary_release_year: number,
   vote_average: VoteAverage,
   sort_by: string,
-  page: number,
 };
 
 type VoteAverage = {
-  lte: number,
-  gte: number,
+  lte: number | null,
+  gte: number | null,
 };
 
 export type MovieResponse = {

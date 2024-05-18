@@ -1,25 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAppContext } from '@hooks/index';
-import { appActions } from '@store/index';
 import { MovieRequestParams } from '@typing/index';
 import { SimpleGrid } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import { appActions } from '@store/index';
 import FiltersBlock from './components/filters-block';
 
 const HomePage = () => {
-  const [params, setParams] = useState<Partial<MovieRequestParams>>();
   const { dispatch } = useAppContext();
 
-  useEffect(() => {
-    setParams((prev) => ({
-      ...prev,
+  const form = useForm<Partial<MovieRequestParams>>({
+    initialValues: {
       page: 1,
-    }));
-    dispatch(appActions.setParams(params));
-  }, []);
+      vote_average: {
+        gte: null,
+        lte: null,
+      },
+    },
+  });
+
+  const onResetFilterValue = useCallback(() => {
+    form.reset();
+  }, [form]);
+
+  useEffect(() => {
+    dispatch(appActions.setParams(form.values));
+  }, [dispatch, form.values]);
 
   return (
     <>
-      <FiltersBlock />
+      <FiltersBlock form={form} onResetFilterValue={onResetFilterValue} />
       <SimpleGrid
         cols={{ base: 1, sm: 1, lg: 2 }}
       />
