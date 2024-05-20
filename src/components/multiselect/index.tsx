@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Combobox, Group, Input, PillsInput, useCombobox, ScrollArea,
 } from '@mantine/core';
 import IconChevron from '@components/icon-chevron';
-import { Genre } from '@typing/index';
-import { appActions } from '@store/index';
-import { useAppContext } from '@hooks/index';
+import { Genre, MovieRequestParams } from '@typing/index';
+import { UseFormReturnType } from '@mantine/form';
+import { selectedGenreKey } from '@utils/index';
 import { PillComponent } from './pill';
 
 import classes from './index.module.css';
@@ -13,13 +13,15 @@ import classes from './index.module.css';
 type MultiSelectProps = {
   genresList: Genre[],
   label: string,
-  placeholder: string
+  placeholder: string,
+  form: UseFormReturnType<Partial<MovieRequestParams>>
 };
 
 const MultiSelectValueRenderer: React.FC<MultiSelectProps> = ({
   genresList,
   label,
   placeholder,
+  form,
 }) => {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -27,11 +29,6 @@ const MultiSelectValueRenderer: React.FC<MultiSelectProps> = ({
   });
 
   const [value, setValue] = useState<string[]>([]);
-  const { dispatch } = useAppContext();
-
-  const selectedGenreKey = useCallback(() => (genresList
-    .filter((industry) => value.includes(industry.name))
-    .map((selected) => selected.id).join('|')), [genresList, value]);
 
   const handleValueSelect = (val: string) => {
     setValue((current) => (
@@ -47,7 +44,7 @@ const MultiSelectValueRenderer: React.FC<MultiSelectProps> = ({
   const values = value.map((item) => (
     <PillComponent
       key={item}
-      data={genresList}
+      genresList={genresList}
       value={item}
       onRemove={() => handleValueRemove(item)}
     >
@@ -73,9 +70,9 @@ const MultiSelectValueRenderer: React.FC<MultiSelectProps> = ({
   });
 
   useEffect(() => {
-    const genreParams = selectedGenreKey();
-    dispatch(appActions.setParams({ with_genres: genreParams }));
-  }, [dispatch, selectedGenreKey]);
+    const genreParams = selectedGenreKey(value, genresList);
+    form.setFieldValue('with_genres', genreParams);
+  }, [form, genresList, value]);
 
   return (
     <Combobox

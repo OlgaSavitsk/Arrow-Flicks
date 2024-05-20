@@ -1,6 +1,10 @@
 .active {
     transition: transform 50ms ease-in-out;
 
+    &[data-variant='transparent']:active {
+        background-color: transparent;
+    }
+
     &:active {
         background: var(--mantine-color-purple-5);
         transform: scale(0.99);

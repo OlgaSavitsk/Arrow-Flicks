@@ -15,15 +15,15 @@ export enum VoteAvrg {
 export type MovieRequestParams = {
   language: string,
   page: number,
-  with_genres: string,
-  primary_release_year: number,
+  with_genres: string | null,
+  primary_release_year: Date | null,
   vote_average: VoteAverage,
-  sort_by: string,
+  sort_by: string | null,
 };
 
 type VoteAverage = {
-  lte: number | null,
-  gte: number | null,
+  lte: string | null,
+  gte: string | null,
 };
 
 export type MovieResponse = {
@@ -33,7 +33,8 @@ export type MovieResponse = {
   total_results: number
 };
 
-type Result = {
+export type Result = {
+  id: number,
   original_title: string,
   poster_path: string
   release_date: string

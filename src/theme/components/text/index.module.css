@@ -1,0 +1,5 @@
+.root {
+    @media (max-width: em(480px)) {
+        font-size: var(--mantine-font-size-xs);
+    }
+}

@@ -1,6 +1,11 @@
 import { createTheme } from '@mantine/core';
 import {
-  ButtonTheme, ComboboxTheme, InputTheme, InputWrapperTheme, NumberInputTheme,
+  ButtonTheme,
+  ComboboxTheme,
+  InputTheme,
+  InputWrapperTheme,
+  NumberInputTheme,
+  TextTheme,
 } from './components';
 import '@mantine/dates/styles.css';
 
@@ -8,6 +13,15 @@ import classes from './index.module.css';
 
 const customTheme = createTheme({
   fontFamily: 'Inter, sans-serif',
+  headings: {
+    sizes: {
+      h3: {
+        fontSize: '1.25rem',
+        lineHeight: '1.1',
+        fontWeight: '600',
+      },
+    },
+  },
   primaryColor: 'purple',
   colors: {
     purple: [
@@ -43,6 +57,7 @@ const customTheme = createTheme({
     InputWrapper: InputWrapperTheme,
     Select: ComboboxTheme,
     NumberInput: NumberInputTheme,
+    Text: TextTheme,
   },
 });
 

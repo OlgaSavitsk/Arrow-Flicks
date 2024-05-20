@@ -1,7 +1,7 @@
 import { Flex, NumberInput } from '@mantine/core';
-
 import { UseFormReturnType } from '@mantine/form';
 import { MovieRequestParams } from '@typing/index';
+
 import classes from './index.module.css';
 
 type RatingComponentProps = {
@@ -16,6 +16,7 @@ const RatingComponent: React.FC<RatingComponentProps> = ({ form }) => (
       min={0}
       step={0.1}
       size="md"
+      key={form.key('vote_average.gte')}
       classNames={{ controls: classes.controls }}
       {...form.getInputProps('vote_average.gte')}
     />
@@ -25,6 +26,7 @@ const RatingComponent: React.FC<RatingComponentProps> = ({ form }) => (
       min={0}
       step={0.1}
       size="md"
+      key={form.key('vote_average.gte')}
       classNames={{ controls: classes.controls }}
       {...form.getInputProps('vote_average.lte')}
     />

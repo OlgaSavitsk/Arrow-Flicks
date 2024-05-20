@@ -1,4 +1,4 @@
-import { MovieRequestParams, MovieResponse } from '@typing/movie.types';
+import { Genre, MovieRequestParams, MovieResponse } from '@typing/movie.types';
 import { AppAction, AppTypes } from '../types';
 
 export const getMovies = (payload?: MovieRequestParams) => ({
@@ -16,6 +16,11 @@ export const setParams = (payload?: Partial<MovieRequestParams>) => ({
   payload,
 });
 
+export const setGenres = (payload: Genre[]) => ({
+  type: AppTypes.SET_GENRES,
+  payload,
+});
+
 export const initStorage = (payload: Array<number>) => ({
   type: AppTypes.INIT_STORAGE,
   payload,
@@ -23,5 +28,10 @@ export const initStorage = (payload: Array<number>) => ({
 
 export const setFavorites = (payload: number) => ({
   type: AppTypes.SET_FAVORITES,
+  payload,
+});
+
+export const setLoading = (payload: boolean) => ({
+  type: AppTypes.SET_LOADING,
   payload,
 });

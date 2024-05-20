@@ -20,14 +20,32 @@ export const AppWrapper = ({ children }: {
   const appProviderValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
   const fetchMovies = useCallback(async () => {
-    appProviderValue.dispatch(appActions.getMovies());
-    const { data: { results } } = await movieApi.getMovieList(params);
-    appProviderValue.dispatch(appActions.setMovies(results));
+    appProviderValue.dispatch(appActions.setLoading(true));
+    try {
+      const { data: { results } } = await movieApi.getMoviesList(params);
+      appProviderValue.dispatch(appActions.setMovies(results));
+    } catch (error) {
+      appProviderValue.dispatch(appActions.setLoading(false));
+    }
   }, [params]);
+
+  const fetchGenresList = useCallback(async () => {
+    appProviderValue.dispatch(appActions.setLoading(true));
+    try {
+      const { data: { genres } } = await movieApi.getGenreList();
+      appProviderValue.dispatch(appActions.setGenres(genres));
+    } catch (error) {
+      appProviderValue.dispatch(appActions.setLoading(false));
+    }
+  }, [appProviderValue]);
 
   useEffect(() => {
     fetchMovies();
   }, [fetchMovies]);
+
+  useEffect(() => {
+    fetchGenresList();
+  }, []);
 
   useEffect(() => {
     if (favorites) {

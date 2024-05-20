@@ -1,3 +1,7 @@
-import { getMoviesList } from './get-movies-list.utils';
+import { formatNumber } from './format-number.utils';
+import { getGenresName, selectedGenreKey } from './get-genre-name.utils';
+import { isValueResponse } from './check-response.utils';
 
-export { getMoviesList };
+export {
+  formatNumber, getGenresName, selectedGenreKey, isValueResponse,
+};

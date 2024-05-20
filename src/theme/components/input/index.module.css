@@ -1,5 +1,6 @@
 .input {
     font-size: var(--mantine-font-size-sm);
+    line-height: calc(1rem * var(--mantine-line-height-md));
     
     &:focus,
     &:focus-within {

@@ -3,27 +3,27 @@ import { SortParams } from '@typing/index';
 
 export const selectOptions: ComboboxItem[] = [
   {
-    value: SortParams.popularityAsc,
+    value: SortParams.popularityDesc,
     label: 'Most Popular',
   },
   {
-    value: SortParams.popularityDesc,
+    value: SortParams.popularityAsc,
     label: 'Least Popular',
   },
   {
-    value: SortParams.voteAverageAsc,
+    value: SortParams.voteAverageDesc,
     label: 'Most Rated',
   },
   {
-    value: SortParams.voteAverageDesc,
+    value: SortParams.voteAverageAsc,
     label: 'Least Rated',
   },
   {
-    value: SortParams.voteCountAsc,
+    value: SortParams.voteCountDesc,
     label: 'Most Voted',
   },
   {
-    value: SortParams.voteCountDesc,
+    value: SortParams.voteCountAsc,
     label: 'Least Voted',
   },
 ];

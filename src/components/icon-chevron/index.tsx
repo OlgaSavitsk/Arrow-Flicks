@@ -1,10 +1,10 @@
 import { rem } from '@mantine/core';
 
-interface AddressBookIconProps extends React.ComponentPropsWithoutRef<'svg'> {
+interface IconChevronProps extends React.ComponentPropsWithoutRef<'svg'> {
   size: number | string | undefined;
 }
 
-const IconChevron = ({ size, style, ...others }: AddressBookIconProps) => (
+const IconChevron = ({ size, style, ...others }: IconChevronProps) => (
   <svg
     width="16"
     height="16"
