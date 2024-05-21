@@ -8,3 +8,4 @@ export { default as SearchComponent } from './search';
 export { default as MultiSelectValueRenderer } from './multiselect';
 export { default as PaginationComponent } from './pagination';
 export { renderMovies } from './movies';
+export { default as ModalComponent } from './modal';

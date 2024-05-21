@@ -26,7 +26,7 @@ const RatingComponent: React.FC<RatingComponentProps> = ({ form }) => (
       min={0}
       step={0.1}
       size="md"
-      key={form.key('vote_average.gte')}
+      key={form.key('vote_average.lte')}
       classNames={{ controls: classes.controls }}
       {...form.getInputProps('vote_average.lte')}
     />

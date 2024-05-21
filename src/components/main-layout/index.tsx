@@ -28,7 +28,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <NavbarComponent />
       </AppShell.Navbar>
 
-      <AppShell.Main bg="var(--mantine-color-grey-0)">
+      <AppShell.Main bg="var(--mantine-color-gray-1)">
         <Group px="md" className={classes.dropdown}>
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         </Group>

@@ -36,7 +36,8 @@ const customTheme = createTheme({
       '#1f0c3b',
       '#0e051a',
     ],
-    grey: [
+    gray: [
+      '#1e1e21',
       '#F5F5F6',
       '#EAEBED',
       '#D5D6DC',
@@ -46,7 +47,6 @@ const customTheme = createTheme({
       '#71727e',
       '#686974',
       '#3a3a40',
-      '#1e1e21',
     ],
   },
   defaultRadius: 'var(--mantine-radius-md)',

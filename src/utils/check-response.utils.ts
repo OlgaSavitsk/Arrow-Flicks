@@ -1,1 +1,1 @@
-export const isValueResponse = <T>(value: T) => (!!value);
+export const isValueResponse = <T>(value: T) => !!value;

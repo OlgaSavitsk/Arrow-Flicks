@@ -1,3 +1,5 @@
+import { FavoriteInfo } from '@typing/index';
+
 export enum LocalStorageKey {
   favorites = 'favorites',
 }
@@ -7,5 +9,5 @@ export const DEFAULT_STORAGE_CONFIG: StorageConfig = {
 };
 
 type StorageConfig = {
-  favorites: Array<number>
+  favorites: Array<FavoriteInfo>
 };

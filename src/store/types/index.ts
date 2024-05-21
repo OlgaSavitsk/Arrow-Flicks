@@ -1,4 +1,6 @@
-import { Genre, MovieRequestParams, Result } from '@typing/index';
+import {
+  FavoriteInfo, Genre, MovieRequestParams, Result,
+} from '@typing/index';
 
 export enum AppTypes {
   GET_MOVIES = 'GET_MOVIES',
@@ -6,15 +8,14 @@ export enum AppTypes {
   SET_PARAMS = 'SET_PARAMS',
   SET_GENRES = 'SET_GENRES',
   INIT_STORAGE = 'INIT_STORAGE',
-  SET_FAVORITES = 'SET_FAVORITES',
   SET_LOADING = 'SET_LOADING',
 }
 
 export type AppState = {
-  movies: Result[];
-  favorites: number[];
+  movies: Array<Result>;
+  favorites: Array<FavoriteInfo>;
   params: MovieRequestParams | null,
-  genres: Genre[]
+  genres: Array<Genre>,
   isLoading: boolean;
 };
 

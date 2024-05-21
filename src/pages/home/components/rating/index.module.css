@@ -5,7 +5,7 @@
         display: flex;
         align-items: flex-end;
         border: none;
-        stroke: var(--mantine-color-grey-4);
+        stroke: var(--mantine-color-gray-5);
         stroke-width: 1px;
     }
 

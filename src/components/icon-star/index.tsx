@@ -6,10 +6,10 @@ import { defaultStarColor } from '@constants/index';
 
 interface IconStarProps {
   color: string;
-  rateValue?: number
+  ratingValue?: number
 }
 
-const IconStar = ({ color = defaultStarColor, rateValue }: IconStarProps) => {
+const IconStar = ({ color = defaultStarColor, ratingValue }: IconStarProps) => {
   const isMobile = useMediaQuery(`(max-width: ${em(480)})`);
   const size = isMobile ? rem(20) : rem(28);
 
@@ -30,9 +30,9 @@ const IconStar = ({ color = defaultStarColor, rateValue }: IconStarProps) => {
           strokeLinejoin="round"
         />
       </svg>
-      {rateValue && (
+      {ratingValue && (
         <Text fw={600}>
-          {rateValue.toFixed(1)}
+          {ratingValue.toFixed(1)}
         </Text>
       )}
     </Group>

@@ -1,4 +1,6 @@
-import { Genre, MovieRequestParams, MovieResponse } from '@typing/movie.types';
+import {
+  Genre, MovieRequestParams, MovieResponse, FavoriteInfo,
+} from '@typing/index';
 import { AppAction, AppTypes } from '../types';
 
 export const getMovies = (payload?: MovieRequestParams) => ({
@@ -21,13 +23,8 @@ export const setGenres = (payload: Genre[]) => ({
   payload,
 });
 
-export const initStorage = (payload: Array<number>) => ({
+export const initStorage = (payload: Array<FavoriteInfo>) => ({
   type: AppTypes.INIT_STORAGE,
-  payload,
-});
-
-export const setFavorites = (payload: number) => ({
-  type: AppTypes.SET_FAVORITES,
   payload,
 });
 

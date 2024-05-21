@@ -1,30 +1,41 @@
-import { useCallback, useState } from 'react';
-import { ActionIcon } from '@mantine/core';
+import { ActionIcon, Flex, Text } from '@mantine/core';
 import { defaultStarColor } from '@constants/index';
 import IconStar from '@components/icon-star';
+import { FavoriteInfo } from '@typing/favorite.type';
 
-const IconStarButton: React.FC = () => {
-  const [isColor, setIsColor] = useState<boolean>(false);
+import classes from './index.module.css';
 
-  const handleSetColor = useCallback(() => {
-    setIsColor(!isColor);
-  }, [isColor]);
+type IconStarButtonProps = {
+  open: () => void;
+  targetFavoriteMovie?: FavoriteInfo;
+};
 
-  const setColor = isColor ? 'var(--mantine-color-purple-4)' : defaultStarColor;
+const IconStarButton: React.FC<IconStarButtonProps> = ({
+  targetFavoriteMovie,
+  open,
+}) => {
+  const { rating } = { ...targetFavoriteMovie };
+  const setColor = rating ? 'var(--mantine-color-purple-4)' : defaultStarColor;
 
   return (
-    <ActionIcon
-      variant="transparent"
-      onClick={handleSetColor}
-      styles={{
-        icon: {
-          alignItems: 'flex-start',
-        },
-      }}
-    >
-      <IconStar color={setColor} />
-    </ActionIcon>
-
+    <Flex gap={4}>
+      <ActionIcon
+        variant="transparent"
+        onClick={open}
+        styles={{
+          icon: {
+            alignItems: 'flex-start',
+          },
+        }}
+      >
+        <IconStar color={setColor} />
+      </ActionIcon>
+      {rating && (
+        <Text fw={600} className={classes['rating-text']}>
+          {rating}
+        </Text>
+      )}
+    </Flex>
   );
 };
 

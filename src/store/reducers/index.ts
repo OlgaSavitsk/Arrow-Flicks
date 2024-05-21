@@ -1,4 +1,5 @@
 import { AppAction, AppState, AppTypes } from '@store/types';
+import { FavoriteInfo } from '@typing/favorite.type';
 import { Genre, MovieRequestParams, Result } from '@typing/movie.types';
 
 export const initialState: AppState = {
@@ -32,18 +33,9 @@ export const appReducer = <T>(state = initialState, { type, payload }: AppAction
       };
     }
     case AppTypes.INIT_STORAGE: {
-      return { ...state, favorites: payload as Array<number> };
+      return { ...state, favorites: payload as Array<FavoriteInfo> };
     }
 
-    case AppTypes.SET_FAVORITES: {
-      let { favorites } = state;
-      if (state.favorites.includes(payload as number)) {
-        favorites = state.favorites.filter((fav) => fav !== payload);
-      } else {
-        favorites = [...state.favorites, payload as number];
-      }
-      return { ...state, favorites: [...favorites] };
-    }
     case AppTypes.SET_LOADING: {
       return { ...state, isLoading: payload as boolean };
     }

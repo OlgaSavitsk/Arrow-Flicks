@@ -12,10 +12,9 @@ export const AppWrapper = ({ children }: {
   children: React.ReactNode
 }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const [storageState] = useStorage(LocalStorageKey.favorites, DEFAULT_STORAGE_CONFIG);
+  const [{ favorites }] = useStorage(LocalStorageKey.favorites, DEFAULT_STORAGE_CONFIG);
 
   const { params } = state;
-  const { favorites } = storageState;
 
   const appProviderValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
@@ -48,9 +47,7 @@ export const AppWrapper = ({ children }: {
   }, []);
 
   useEffect(() => {
-    if (favorites) {
-      dispatch(appActions.initStorage(favorites));
-    }
+    dispatch(appActions.initStorage(favorites));
   }, [favorites]);
 
   return (
