@@ -4,7 +4,7 @@ import { Image } from '@mantine/core';
 
 const Logo = () => (
   <NextLink type="router" href={RoutePath.Home}>
-    <Image src="../icons/logo.svg" />
+    <Image src="../icons/logo.svg" alt="logo" />
   </NextLink>
 );
 

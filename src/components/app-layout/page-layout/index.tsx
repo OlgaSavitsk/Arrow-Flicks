@@ -19,13 +19,14 @@ const titleItems = {
     title: 'Rated movies',
     action: <SearchComponent />,
   },
+  [RoutePath.NotFound]: null,
 };
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   const { route } = useRouter();
   const isTablet = useMediaQuery(`(max-width: ${em(1370)})`);
 
-  const { title, action } = titleItems[route as RoutePath];
+  const { title, action } = titleItems[route as RoutePath] || {};
 
   return (
     <Stack pt={40} px={isTablet ? 20 : 90} gap={40}>

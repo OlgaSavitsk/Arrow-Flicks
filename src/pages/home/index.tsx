@@ -4,7 +4,8 @@ import { MovieRequestParams, VoteAvrg } from '@typing/index';
 import { SimpleGrid } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { appActions } from '@store/index';
-import { PaginationComponent, renderMovies } from '@components/index';
+import { EmptyStateComponent, PaginationComponent, renderMovies } from '@components/index';
+import { EmptyState } from '@constants/index';
 import FiltersBlock from './components/filters-block';
 
 const initialValues = {
@@ -50,6 +51,7 @@ const HomePage = () => {
         {renderMovies({ movies })}
       </SimpleGrid>
       <PaginationComponent form={form} />
+      <EmptyStateComponent status={EmptyState.EmptyMovie} />
     </>
   );
 };

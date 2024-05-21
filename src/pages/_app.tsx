@@ -3,9 +3,9 @@ import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import customTheme from '@theme/custom.theme';
 import { ModalsProvider } from '@mantine/modals';
-import { MainLayout } from '@components/index';
 import { AppProps } from 'next/app';
-import { AppWrapper } from '@store/provider';
+import { AppProvider } from '@store/provider';
+import { AppLayout } from '@components/index';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <MantineProvider theme={customTheme}>
@@ -18,11 +18,11 @@ const App = ({ Component, pageProps }: AppProps) => (
         />
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
-      <AppWrapper>
-        <MainLayout>
+      <AppProvider>
+        <AppLayout>
           <Component {...pageProps} />
-        </MainLayout>
-      </AppWrapper>
+        </AppLayout>
+      </AppProvider>
     </ModalsProvider>
   </MantineProvider>
 );

@@ -8,7 +8,7 @@ import { appActions } from '.';
 import { AppContext } from './context';
 import { appReducer, initialState } from './reducers';
 
-export const AppWrapper = ({ children }: {
+export const AppProvider = ({ children }: {
   children: React.ReactNode
 }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
