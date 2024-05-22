@@ -22,8 +22,9 @@ export const AppProvider = ({ children }: {
   const fetchMovies = useCallback(async () => {
     appProviderValue.dispatch(appActions.setLoading(true));
     try {
-      const { data: { results } } = await movieApi.getMoviesList(params);
-      appProviderValue.dispatch(appActions.setMovies(results));
+      const { data } = await movieApi.getMoviesList(params);
+
+      appProviderValue.dispatch(appActions.setMovies(data));
     } catch (error) {
       if (isAxiosError(error)) {
         const status = error.response?.status;

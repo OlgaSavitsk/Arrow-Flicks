@@ -2,11 +2,11 @@ import { Result } from '@typing/index';
 import { Movie } from './components/movie';
 
 type MoviesProps = {
-  movies: Result[]
+  results: Array<Result> | undefined
 };
 
 export const renderMovies = ({
-  movies,
+  results,
 }: MoviesProps) => (
-  movies.map((movie) => <Movie key={movie.id} movie={movie} />)
+  results && results.map((movie) => <Movie key={movie.id} movie={movie} />)
 );

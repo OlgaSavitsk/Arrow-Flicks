@@ -23,7 +23,9 @@ const initialValues = {
 const HomePage = () => {
   const { dispatch, state: { movies, error } } = useAppContext();
 
-  const isEmptyState = !!error || movies.length === 0;
+  const { results } = { ...movies };
+
+  const isEmptyState = !!error || results?.length === 0;
 
   const form = useForm<Partial<MovieRequestParams>>({
     initialValues,
@@ -59,7 +61,7 @@ const HomePage = () => {
             <SimpleGrid
               cols={{ base: 1, md: 1, lg: 2 }}
             >
-              {renderMovies({ movies })}
+              {renderMovies({ results })}
             </SimpleGrid>
             <PaginationComponent form={form} />
           </>

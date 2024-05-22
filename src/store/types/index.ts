@@ -1,10 +1,9 @@
 import { HttpStatusCode } from '@constants/index';
 import {
-  FavoriteInfo, Genre, MovieRequestParams, Result,
+  FavoriteInfo, Genre, MovieRequestParams, MovieResponse,
 } from '@typing/index';
 
 export enum AppTypes {
-  GET_MOVIES = 'GET_MOVIES',
   SET_MOVIES = 'SET_MOVIES',
   SET_PARAMS = 'SET_PARAMS',
   SET_GENRES = 'SET_GENRES',
@@ -14,7 +13,7 @@ export enum AppTypes {
 }
 
 export type AppState = {
-  movies: Array<Result>;
+  movies: MovieResponse | undefined;
   favorites: Array<FavoriteInfo>;
   params: MovieRequestParams | null,
   genres: Array<Genre>,

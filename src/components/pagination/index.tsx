@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { Pagination, Group } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
 import { MovieRequestParams } from '@typing/movie.types';
-import { initTotalPage, maxTotalPage } from '@constants/movie';
+import { initTotalPage } from '@constants/movie';
 import { useAppContext } from '@hooks/index';
 
 interface PaginationComponentProps {
@@ -21,7 +21,7 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({ form }) => {
   }, [form, params]);
 
   const totalPages = useMemo(() => (
-    activePage >= initTotalPage ? maxTotalPage : initTotalPage
+    activePage >= initTotalPage ? activePage + 1 : initTotalPage
   ), [activePage]);
 
   const renderPagination = useCallback(() => (
@@ -31,6 +31,20 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({ form }) => {
       total={totalPages}
       value={activePage}
       onChange={onPageChangeHandler}
+      getItemProps={(pageIndex: any) => ({
+        style: {
+          display:
+          (pageIndex === initTotalPage && activePage < initTotalPage)
+          || pageIndex === activePage
+          || pageIndex === activePage + 1
+          || pageIndex === activePage - 1 ? 'block' : 'none',
+        },
+      })}
+      styles={{
+        dots: {
+          display: 'none',
+        },
+      }}
     />
   ), [activePage, onPageChangeHandler, totalPages]);
 

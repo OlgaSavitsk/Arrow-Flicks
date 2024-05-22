@@ -25,6 +25,7 @@ module.exports = {
                 namedComponents: 'arrow-function',
             },
         ],
+        'naming-convention': 'off'
     },
     settings: {
         'import/resolver': {

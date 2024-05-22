@@ -1,10 +1,10 @@
 import { HttpStatusCode } from '@constants/status-code.constants';
 import { AppAction, AppState, AppTypes } from '@store/types';
 import { FavoriteInfo } from '@typing/favorite.type';
-import { Genre, MovieRequestParams, Result } from '@typing/movie.types';
+import { Genre, MovieRequestParams, MovieResponse } from '@typing/movie.types';
 
 export const initialState: AppState = {
-  movies: [],
+  movies: undefined,
   favorites: [],
   params: null,
   genres: [],
@@ -17,7 +17,7 @@ export const appReducer = <T>(state = initialState, { type, payload }: AppAction
     case AppTypes.SET_MOVIES: {
       return {
         ...state,
-        movies: payload as Array<Result>,
+        movies: payload as MovieResponse,
         isLoading: false,
       };
     }
