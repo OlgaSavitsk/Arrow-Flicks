@@ -1,7 +1,8 @@
 import {
   useReducer, useMemo, useCallback, useEffect,
 } from 'react';
-import { LocalStorageKey, DEFAULT_STORAGE_CONFIG } from '@constants/index';
+import { isAxiosError } from 'axios';
+import { LocalStorageKey, DEFAULT_STORAGE_CONFIG, HttpStatusCode } from '@constants/index';
 import { useStorage } from '@hooks/index';
 import { movieApi } from '@services/index';
 import { appActions } from '.';
@@ -24,6 +25,13 @@ export const AppProvider = ({ children }: {
       const { data: { results } } = await movieApi.getMoviesList(params);
       appProviderValue.dispatch(appActions.setMovies(results));
     } catch (error) {
+      if (isAxiosError(error)) {
+        const status = error.response?.status;
+
+        if (status === HttpStatusCode.BAD_REQUEST) {
+          appProviderValue.dispatch(appActions.setError(status));
+        }
+      }
       appProviderValue.dispatch(appActions.setLoading(false));
     }
   }, [params]);
@@ -35,6 +43,7 @@ export const AppProvider = ({ children }: {
       appProviderValue.dispatch(appActions.setGenres(genres));
     } catch (error) {
       appProviderValue.dispatch(appActions.setLoading(false));
+      throw error;
     }
   }, [appProviderValue]);
 

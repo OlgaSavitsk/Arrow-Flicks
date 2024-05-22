@@ -6,6 +6,7 @@ import { useForm } from '@mantine/form';
 import { appActions } from '@store/index';
 import { EmptyStateComponent, PaginationComponent, renderMovies } from '@components/index';
 import { EmptyState } from '@constants/index';
+import { rateFilterValidator } from '@utils/index';
 import FiltersBlock from './components/filters-block';
 
 const initialValues = {
@@ -20,16 +21,22 @@ const initialValues = {
 };
 
 const HomePage = () => {
-  const { dispatch, state: { movies } } = useAppContext();
+  const { dispatch, state: { movies, error } } = useAppContext();
+
+  const isEmptyState = !!error || movies.length === 0;
 
   const form = useForm<Partial<MovieRequestParams>>({
     initialValues,
+    validate: {
+      vote_average: (value) => rateFilterValidator(value),
+    },
     transformValues: ({
       vote_average, ...rest
     }: Partial<MovieRequestParams>) => (rest),
   });
 
   const setParams = useCallback(() => {
+    form.validate();
     const params = {
       ...form.getTransformedValues(),
       [VoteAvrg.gte]: form.values.vote_average?.gte,
@@ -45,13 +52,18 @@ const HomePage = () => {
   return (
     <>
       <FiltersBlock form={form} />
-      <SimpleGrid
-        cols={{ base: 1, md: 1, lg: 2 }}
-      >
-        {renderMovies({ movies })}
-      </SimpleGrid>
-      <PaginationComponent form={form} />
-      <EmptyStateComponent status={EmptyState.EmptyMovie} />
+      {isEmptyState
+        ? <EmptyStateComponent status={EmptyState.EmptyMovie} />
+        : (
+          <>
+            <SimpleGrid
+              cols={{ base: 1, md: 1, lg: 2 }}
+            >
+              {renderMovies({ movies })}
+            </SimpleGrid>
+            <PaginationComponent form={form} />
+          </>
+        )}
     </>
   );
 };

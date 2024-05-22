@@ -4,7 +4,6 @@ import axios, {
   AxiosResponse,
   AxiosRequestConfig,
   AxiosInstance,
-  isAxiosError,
 } from 'axios';
 
 const createHeaderConfig = (config: InternalAxiosRequestConfig) => {
@@ -29,15 +28,8 @@ const baseApi = getApiInstance({
 });
 
 const fetchData = async <T>(url: string, params: unknown = {}): Promise<T> => {
-  try {
-    const response = await baseApi({ method: 'get', url, params });
-    return response.data;
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      throw new Error(error.message);
-    }
-    throw error;
-  }
+  const response = await baseApi({ method: 'get', url, params });
+  return response.data;
 };
 
 export default fetchData;

@@ -1,6 +1,7 @@
 import {
   Genre, MovieRequestParams, MovieResponse, FavoriteInfo,
 } from '@typing/index';
+import { HttpStatusCode } from '@constants/index';
 import { AppAction, AppTypes } from '../types';
 
 export const getMovies = (payload?: MovieRequestParams) => ({
@@ -30,5 +31,10 @@ export const initStorage = (payload: Array<FavoriteInfo>) => ({
 
 export const setLoading = (payload: boolean) => ({
   type: AppTypes.SET_LOADING,
+  payload,
+});
+
+export const setError = (payload: HttpStatusCode) => ({
+  type: AppTypes.SET_ERROR,
   payload,
 });

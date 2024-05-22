@@ -21,9 +21,9 @@ export type MovieRequestParams = {
   sort_by: string | null,
 };
 
-type VoteAverage = {
-  lte: string | null,
+export type VoteAverage = {
   gte: string | null,
+  lte: string | null,
 };
 
 export type MovieResponse = {

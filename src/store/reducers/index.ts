@@ -1,3 +1,4 @@
+import { HttpStatusCode } from '@constants/status-code.constants';
 import { AppAction, AppState, AppTypes } from '@store/types';
 import { FavoriteInfo } from '@typing/favorite.type';
 import { Genre, MovieRequestParams, Result } from '@typing/movie.types';
@@ -8,6 +9,7 @@ export const initialState: AppState = {
   params: null,
   genres: [],
   isLoading: false,
+  error: null,
 };
 
 export const appReducer = <T>(state = initialState, { type, payload }: AppAction<T>) => {
@@ -23,6 +25,7 @@ export const appReducer = <T>(state = initialState, { type, payload }: AppAction
       return {
         ...state,
         params: { ...state.params, ...payload } as MovieRequestParams,
+        error: null,
       };
     }
     case AppTypes.SET_GENRES: {
@@ -38,6 +41,10 @@ export const appReducer = <T>(state = initialState, { type, payload }: AppAction
 
     case AppTypes.SET_LOADING: {
       return { ...state, isLoading: payload as boolean };
+    }
+
+    case AppTypes.SET_ERROR: {
+      return { ...state, error: payload as HttpStatusCode };
     }
     default:
       return state;
