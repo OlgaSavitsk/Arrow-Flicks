@@ -1,8 +1,8 @@
-import { Result } from '@typing/index';
+import { FavoriteInfo, Result } from '@typing/index';
 import { Movie } from './components/movie';
 
 type MoviesProps = {
-  results: Array<Result> | undefined
+  results: Array<Result> | Array<FavoriteInfo> | undefined
 };
 
 export const renderMovies = ({

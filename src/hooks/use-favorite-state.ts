@@ -13,7 +13,7 @@ export const useFavoriteState = () => {
   const { dispatch, state } = useAppContext();
 
   const getFavoriteIndex = (payload: FavoriteInfo) => state.favorites.findIndex(
-    ({ movieId }: FavoriteInfo) => movieId === payload.movieId,
+    ({ id }: FavoriteInfo) => id === payload.id,
   );
 
   const handleSaveFavorites = (payload: FavoriteInfo) => {
@@ -29,17 +29,17 @@ export const useFavoriteState = () => {
     dispatch(appActions.initStorage(storageState));
   };
 
-  const onRemoveFavorites = (id: number) => {
+  const onRemoveFavorites = (movieId: number) => {
     const storageState = favorites
-      .filter(({ movieId }: FavoriteInfo) => movieId !== id);
+      .filter(({ id }: FavoriteInfo) => id !== movieId);
     setValue({ favorites: storageState });
     dispatch(appActions.initStorage(storageState));
   };
 
   const getFavoriteMovie = useCallback((
-    id: number,
+    movieId: number,
   ) => state.favorites
-    .find(({ movieId }: FavoriteInfo) => movieId === id), [state.favorites]);
+    .find(({ id }: FavoriteInfo) => id === movieId), [state.favorites]);
 
   return {
     favorites, getFavoriteMovie, handleSaveFavorites, onRemoveFavorites,

@@ -23,7 +23,7 @@ const initialValues = {
 const HomePage = () => {
   const { dispatch, state: { movies, error } } = useAppContext();
 
-  const { results } = { ...movies };
+  const { results, total_pages } = { ...movies };
 
   const isEmptyState = !!error || results?.length === 0;
 
@@ -63,7 +63,7 @@ const HomePage = () => {
             >
               {renderMovies({ results })}
             </SimpleGrid>
-            <PaginationComponent form={form} />
+            <PaginationComponent pagesCount={total_pages} form={form} />
           </>
         )}
     </>

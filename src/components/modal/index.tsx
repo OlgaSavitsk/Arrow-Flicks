@@ -12,14 +12,14 @@ type MovieProps = {
 };
 
 export const ModalComponent: React.FC<MovieProps> = ({
-  movie: { id, original_title },
+  movie,
   opened,
   close,
 }) => {
   const { getFavoriteMovie, handleSaveFavorites, onRemoveFavorites } = useFavoriteState();
   const [payload, setPayload] = useState<FavoriteInfo>({
-    movieId: id,
-    rating: getFavoriteMovie(id)?.rating || 0,
+    ...movie,
+    rating: getFavoriteMovie(movie.id)?.rating || 0,
   });
 
   const onSave = () => {
@@ -30,7 +30,7 @@ export const ModalComponent: React.FC<MovieProps> = ({
 
   const onRemove = () => {
     setPayload({ ...payload, rating: 0 });
-    onRemoveFavorites(id);
+    onRemoveFavorites(movie.id);
     close();
   };
 
@@ -53,7 +53,7 @@ export const ModalComponent: React.FC<MovieProps> = ({
       }}
     >
       <Stack gap="md">
-        <Text fw={700}>{original_title}</Text>
+        <Text fw={700}>{movie.original_title}</Text>
         <Rating
           count={10}
           size="lg"

@@ -8,7 +8,7 @@ import { SortParams, VoteAvrg } from '@typing/index';
 const queryParamsSchema = z.object({
   page: z.string().default('1').transform(Number),
   with_genres: z.string().optional(),
-  primary_release_year: z.number().optional(),
+  primary_release_year: z.string().transform(Number).nullable().optional(),
   [VoteAvrg.gte]: z.coerce.number().max(10).optional(),
   [VoteAvrg.lte]: z.coerce.number().max(10).optional(),
   sort_by: z.nativeEnum(SortParams).optional(),

@@ -16,7 +16,7 @@ export type MovieRequestParams = {
   language: string,
   page: number,
   with_genres: string | null,
-  primary_release_year: Date | null,
+  primary_release_year: number | null,
   vote_average: VoteAverage,
   sort_by: string | null,
 };

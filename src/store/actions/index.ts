@@ -4,11 +4,6 @@ import {
 import { HttpStatusCode } from '@constants/index';
 import { AppAction, AppTypes } from '../types';
 
-// export const getResponse = (payload?: MovieRequestParams) => ({
-//   type: AppTypes.GET_MOVIES,
-//   payload,
-// });
-
 export const setMovies = (payload: MovieResponse[]): AppAction<MovieResponse[]> => ({
   type: AppTypes.SET_MOVIES,
   payload,

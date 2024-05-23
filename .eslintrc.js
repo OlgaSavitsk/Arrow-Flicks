@@ -25,7 +25,15 @@ module.exports = {
                 namedComponents: 'arrow-function',
             },
         ],
-        'naming-convention': 'off'
+        '@typescript-eslint/naming-convention': [
+            {
+              selector: 'variable',
+              format: ['UPPER_CASE'],
+              leadingUnderscore: 'allow',
+              trailingUnderscore: 'allow',
+            },
+          
+          ]
     },
     settings: {
         'import/resolver': {

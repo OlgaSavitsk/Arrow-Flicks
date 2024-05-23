@@ -1,17 +1,32 @@
-import { useEffect } from 'react';
-import { Button, Group } from '@mantine/core';
+import { useState } from 'react';
+import { SimpleGrid } from '@mantine/core';
 import { NextPage } from 'next';
+import { renderMovies } from '@components/movies';
+import { useAppContext } from '@hooks/index';
+import PaginationComponent from '@components/pagination';
+import { favoritePerPage } from '@constants/movie';
+import { splitData } from '@utils/split-data.utils';
 
 const RatedPage: NextPage = () => {
-  useEffect(() => {
-    const fetch = async () => {};
-    fetch();
-  }, []);
+  const { state: { favorites } } = useAppContext();
+  const [pageIndex, setPageIndex] = useState(1);
+
+  const data = splitData(favorites, favoritePerPage);
+  const dataPerPage = data[pageIndex - 1];
 
   return (
-    <Group justify="center">
-      <Button size="xl">Rated</Button>
-    </Group>
+    <>
+      <SimpleGrid
+        cols={{ base: 1, md: 1, lg: 2 }}
+      >
+        {renderMovies({ results: dataPerPage })}
+      </SimpleGrid>
+      <PaginationComponent
+        isFavorite
+        pagesCount={data.length}
+        setPageIndex={setPageIndex}
+      />
+    </>
   );
 };
 
