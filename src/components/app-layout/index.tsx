@@ -1,8 +1,6 @@
 import { RoutePath } from '@constants/index';
 import { useRouter } from 'next/router';
 import NotFoundPage from '@pages/404';
-import LoaderComponent from '@components/loader';
-import { Suspense } from 'react';
 import MainLayout from './main-layout';
 
 const pageLayout = {
@@ -17,20 +15,14 @@ type LayoutProps = {
 };
 
 const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
-  const { route, isFallback } = useRouter();
-
-  if (isFallback) {
-    return <LoaderComponent />;
-  }
+  const { route } = useRouter();
 
   const Layout = pageLayout[route as RoutePath];
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Layout>
-        {children}
-      </Layout>
-    </Suspense>
+    <Layout>
+      {children}
+    </Layout>
   );
 };
 

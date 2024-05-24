@@ -1,5 +1,5 @@
 import { Flex, Group } from '@mantine/core';
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Logo from '@components/logo';
@@ -21,6 +21,10 @@ const NavbarComponent = () => {
       {item.label}
     </Link>
   ));
+
+  useLayoutEffect(() => {
+    setActive(route);
+  }, [route]);
 
   return (
     <nav className={classes.navbar}>

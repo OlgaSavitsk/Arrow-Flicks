@@ -7,6 +7,7 @@ import {
   Group, Stack, Title, em,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { isArrayWithItems } from '@utils/index';
 import { useRouter } from 'next/router';
 
 type PageLayoutProps = {
@@ -33,7 +34,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
 
   const { title, action } = titleItems[route as RoutePath] || {};
 
-  const isFavoritesEmpty = !favorites.length && route === RoutePath.Rated;
+  const isFavoritesEmpty = !isArrayWithItems(favorites) && route === RoutePath.Rated;
 
   return (
     isFavoritesEmpty

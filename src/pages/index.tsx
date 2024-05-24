@@ -8,7 +8,7 @@ import {
   EmptyStateComponent, PaginationComponent, renderMovies, LoaderComponent,
 } from '@components/index';
 import { EmptyState } from '@constants/index';
-import { rateFilterValidator } from '@utils/index';
+import { isArrayWithItems, rateFilterValidator } from '@utils/index';
 import FiltersBlock from '@components/filters-block';
 
 const initialValues = {
@@ -27,7 +27,7 @@ const HomePage = () => {
 
   const { results, total_pages } = { ...movies };
 
-  const isEmptyState = !!error || results?.length === 0;
+  const isEmptyState = !!error || !isArrayWithItems(results);
 
   const form = useForm<Partial<MovieRequestParams>>({
     initialValues,

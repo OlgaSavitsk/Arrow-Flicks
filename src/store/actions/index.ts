@@ -38,3 +38,8 @@ export const setError = (payload: HttpStatusCode) => ({
   type: AppTypes.SET_ERROR,
   payload,
 });
+
+export const setSearchWord = (payload: string) => ({
+  type: AppTypes.KEY_WORD,
+  payload,
+});

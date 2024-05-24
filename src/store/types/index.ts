@@ -11,6 +11,7 @@ export enum AppTypes {
   INIT_STORAGE = 'INIT_STORAGE',
   SET_LOADING = 'SET_LOADING',
   SET_ERROR = 'SET_ERROR',
+  KEY_WORD = 'KEY_WORD',
 }
 
 export type AppState = {
@@ -21,6 +22,7 @@ export type AppState = {
   genres: Array<Genre>,
   isLoading: boolean;
   error: HttpStatusCode | null
+  keyWord: string
 };
 
 export type AppAction<Payload> = {
