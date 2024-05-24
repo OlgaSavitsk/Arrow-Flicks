@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Button, Flex, Modal, Rating, Stack, Text
+  Button, Flex, Modal, Rating, Stack, Text,
 } from '@mantine/core';
 import { useFavoriteState } from '@hooks/index';
 import { FavoriteInfo, MovieDetails, Result } from '@typing/index';
