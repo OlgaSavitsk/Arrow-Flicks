@@ -1,20 +1,20 @@
 import { useEffect, useMemo } from 'react';
-import { usePathname } from 'next/navigation';
+import { Movie } from '@components/movies/components/movie';
+import { RoutePath } from '@constants/routes.constants';
 import { useAppContext } from '@hooks/index';
 import {
-  AspectRatio,
-  Card,
+  Anchor, AspectRatio,
+  Breadcrumbs, Card,
   Divider,
+  em,
+  Grid, GridCol, Image,
   SimpleGrid,
   Stack,
-  Title,
   Text,
-  Image,
-  Grid, GridCol, Breadcrumbs, Anchor, em,
+  Title,
 } from '@mantine/core';
-import { RoutePath } from '@constants/routes.constants';
-import { Movie } from '@components/movies/components/movie';
 import { useMediaQuery } from '@mantine/hooks';
+import { usePathname } from 'next/navigation';
 
 const MovieDetailsPage: React.FC = () => {
   const pathname = usePathname();
@@ -44,7 +44,7 @@ const MovieDetailsPage: React.FC = () => {
   });
 
   const breadcrumbItems = [
-    <Anchor key={path} href={RoutePath.Home} c="purple.4">Movies</Anchor>,
+    <Anchor key={movieId} href={RoutePath.Home} c="purple.4">Movies</Anchor>,
   ].concat(extraBreadcrumbItems);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const MovieDetailsPage: React.FC = () => {
   return (
     <SimpleGrid
       cols={{ base: 1, md: 1 }}
-      px={isTablet ? 20 : 90}
+      px={isTablet ? 0 : 90}
       my={-40}
     >
       <Breadcrumbs>{breadcrumbItems}</Breadcrumbs>

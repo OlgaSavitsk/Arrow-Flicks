@@ -1,8 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
-import { fetchData } from '@services/index';
-import { HttpStatusCode } from '@constants/index';
 import { z } from 'zod';
+import { HttpStatusCode } from '@constants/index';
+import { fetchData } from '@services/index';
 import { SortParams, VoteAvrg } from '@typing/index';
 
 const queryParamsSchema = z.object({

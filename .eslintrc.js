@@ -7,10 +7,10 @@ module.exports = {
     parserOptions: {
         project: './tsconfig.eslint.json',
         sourceType: 'module',
+        ecmaVersion: 'latest',
     },
-    plugins: ['react-refresh'],
+    plugins: ['@typescript-eslint'],
     rules: {
-        'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
         'import/no-absolute-path': 'off',
         'import/prefer-default-export': 'off',
         'react/react-in-jsx-scope': 'off',

@@ -1,8 +1,9 @@
-import { Flex, Group } from '@mantine/core';
-import { useLayoutEffect, useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { Flex, Group } from '@mantine/core';
 import Logo from '@components/logo';
+
 import MenuItems from './config/menu-items';
 import classes from './index.module.css';
 
@@ -22,7 +23,7 @@ const NavbarComponent = () => {
     </Link>
   ));
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setActive(route);
   }, [route]);
 

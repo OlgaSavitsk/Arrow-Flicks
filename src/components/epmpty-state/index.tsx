@@ -1,9 +1,10 @@
-import {
-  Stack, Title, Image, Button, em,
-} from '@mantine/core';
-import { RoutePath, EmptyState } from '@constants/index';
-import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
+import {
+  Button, em, Image, Stack, Title,
+} from '@mantine/core';
+import { EmptyState, RoutePath } from '@constants/index';
+import { useMediaQuery } from '@mantine/hooks';
+
 import emptyContext from './empty.helper';
 
 type NotFoundComponentProps = {

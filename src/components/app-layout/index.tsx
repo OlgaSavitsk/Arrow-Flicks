@@ -1,6 +1,7 @@
-import { RoutePath } from '@constants/index';
 import { useRouter } from 'next/router';
 import NotFoundPage from '@pages/404';
+import { RoutePath } from '@constants/index';
+
 import MainLayout from './main-layout';
 
 const pageLayout = {

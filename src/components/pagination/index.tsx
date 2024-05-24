@@ -1,12 +1,13 @@
 import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { Pagination, Group } from '@mantine/core';
+import { Group, Pagination } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
-import { MovieRequestParams } from '@typing/index';
 import { controlStep, favoritePerPage, initTotalPage } from '@constants/index';
 import { useAppContext } from '@hooks/index';
+import { MovieRequestParams } from '@typing/index';
 import { isArrayWithItems } from '@utils/index';
+
 import { favoriteInitPages, movieInitPages } from './helper';
 
 type PaginationComponentProps = {

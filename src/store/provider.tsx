@@ -1,10 +1,12 @@
-import {
-  useReducer, useMemo, useCallback, useEffect,
-} from 'react';
-import { isAxiosError } from 'axios';
-import { LocalStorageKey, DEFAULT_STORAGE_CONFIG, HttpStatusCode } from '@constants/index';
+import { DEFAULT_STORAGE_CONFIG, HttpStatusCode, LocalStorageKey } from '@constants/index';
 import { useStorage } from '@hooks/index';
 import { movieApi } from '@services/index';
+import { isAxiosError } from 'axios';
+import {
+  useCallback, useEffect,
+  useMemo, useReducer,
+} from 'react';
+
 import { appActions } from '.';
 import { AppContext } from './context';
 import { appReducer, initialState } from './reducers';

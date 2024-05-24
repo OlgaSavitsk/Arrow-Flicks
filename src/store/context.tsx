@@ -1,8 +1,9 @@
 import {
   createContext,
 } from 'react';
-import { ContextProps } from './types';
+
 import { initialState } from './reducers';
+import { ContextProps } from './types';
 
 const contextConfig: ContextProps = {
   state: initialState,

@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
-import { SimpleGrid } from '@mantine/core';
 import { NextPage } from 'next';
+import { EmptyStateComponent, LoaderComponent, PaginationComponent } from '@components/index';
 import { renderMovies } from '@components/movies';
-import { useAppContext } from '@hooks/index';
-import { PaginationComponent, LoaderComponent, EmptyStateComponent } from '@components/index';
-import { EmptyState, favoritePerPage } from '@constants/index';
-import { isArrayWithItems, splitData } from '@utils/index';
 import { setSearchedValue } from '@components/search/helper';
+import { EmptyState, favoritePerPage } from '@constants/index';
+import { useAppContext } from '@hooks/index';
+import { SimpleGrid } from '@mantine/core';
+import { isArrayWithItems, splitData } from '@utils/index';
 
 const RatedPage: NextPage = () => {
   const { state: { favorites, keyWord, isLoading } } = useAppContext();

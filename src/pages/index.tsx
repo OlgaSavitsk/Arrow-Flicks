@@ -1,15 +1,16 @@
-import { Fragment, useCallback, useEffect } from 'react';
-import { useAppContext } from '@hooks/index';
-import { MovieRequestParams, VoteAvrg } from '@typing/index';
+import { useCallback, useEffect } from 'react';
 import { SimpleGrid } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { appActions } from '@store/index';
+import FiltersBlock from '@components/filters-block';
 import {
-  EmptyStateComponent, PaginationComponent, renderMovies, LoaderComponent,
+  EmptyStateComponent, LoaderComponent,
+  PaginationComponent, renderMovies,
 } from '@components/index';
 import { EmptyState } from '@constants/index';
+import { useAppContext } from '@hooks/index';
+import { appActions } from '@store/index';
+import { MovieRequestParams, VoteAvrg } from '@typing/index';
 import { isArrayWithItems, rateFilterValidator } from '@utils/index';
-import FiltersBlock from '@components/filters-block';
 
 const initialValues = {
   page: 1,
@@ -56,6 +57,7 @@ const HomePage = () => {
   return (
     <>
       <FiltersBlock form={form} />
+
       {isEmptyState
         ? <EmptyStateComponent status={EmptyState.EmptyMovie} height={252} justify="start" />
         : (

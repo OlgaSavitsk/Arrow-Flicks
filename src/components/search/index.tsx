@@ -1,10 +1,11 @@
-import {
-  TextInput, Button, Image,
-} from '@mantine/core';
-
 import { useCallback, useState } from 'react';
-import { useAppContext } from '@hooks/index';
+import {
+  Button, Image,
+  TextInput,
+} from '@mantine/core';
 import { appActions } from '@store/index';
+import { useAppContext } from '@hooks/index';
+
 import classes from './index.module.css';
 
 const SearchComponent: React.FC = () => {

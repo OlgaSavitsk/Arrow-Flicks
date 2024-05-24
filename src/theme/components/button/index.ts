@@ -13,6 +13,14 @@ export default Button.extend({
         },
       };
     }
+    if (props.disabled) {
+      return {
+        root: {
+          background: 'var(--mantine-color-purple-4)',
+          color: 'var(--mantine-color-white)',
+        },
+      };
+    }
     return { root: {} };
   },
   vars: (_theme, props) => {

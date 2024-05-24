@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
-import { fetchData } from '@services/index';
 import { HttpStatusCode } from '@constants/index';
+import { fetchData } from '@services/index';
 
 export default async function handler(request: NextApiRequest, res: NextApiResponse) {
   const { API_KEY } = process.env;

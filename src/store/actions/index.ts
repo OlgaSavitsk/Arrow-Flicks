@@ -1,7 +1,9 @@
-import {
-  Genre, MovieRequestParams, MovieResponse, FavoriteInfo, MovieDetails,
-} from '@typing/index';
 import { HttpStatusCode } from '@constants/index';
+import {
+  FavoriteInfo, Genre, MovieDetails,
+  MovieRequestParams, MovieResponse,
+} from '@typing/index';
+
 import { AppAction, AppTypes } from '../types';
 
 export const setMovies = (payload: MovieResponse[]): AppAction<MovieResponse[]> => ({

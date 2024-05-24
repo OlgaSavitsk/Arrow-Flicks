@@ -1,19 +1,19 @@
 import { useEffect, useMemo, useState } from 'react';
+import NextLink from 'next/link';
+import dayjs from 'dayjs';
+import { useDisclosure } from '@mantine/hooks';
 import {
   Card, Flex, Image, Stack, Text, Title,
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import dayjs from 'dayjs';
-import NextLink from 'next/link';
-
-import { MovieDetails, Result } from '@typing/index';
-import { dateFormat } from '@constants/index';
-import { movieApi } from '@services/index';
 import { formatNumber, getGenresName, isValueResponse } from '@utils/index';
 import { useAppContext, useFavoriteState } from '@hooks/index';
-import IconStar from '@components/icon-star';
+import { dateFormat } from '@constants/index';
 import IconStarButton from '@components/star-button';
+import IconStar from '@components/icon-star';
 import { ModalComponent } from '@components/modal';
+import { MovieDetails, Result } from '@typing/index';
+import { movieApi } from '@services/index';
+
 import { Description } from './description';
 
 type MovieProps = {
@@ -52,16 +52,26 @@ export const Movie: React.FC<MovieProps> = ({
     <>
       <Card
         p={{ base: 10, md: 20, lg: 24 }}
-        h={{ base: 'auto', sm: height }}
+        h={{ base: 'fit-content', xs: height }}
         radius={12}
       >
-        <Flex gap="md" h="100%">
-          <Image
-            src={sourceUrl}
-            fallbackSrc="../icons/empty.svg"
-            w={{ base: 110, xs: width }}
-            alt={movie.original_title}
-          />
+        <Flex gap="md" h="100%" direction={{ base: 'column', xs: 'row' }}>
+          {isDetails ? (
+            <Image
+              src={sourceUrl}
+              fallbackSrc="../icons/empty.svg"
+              w={{ base: '100%', xs: width }}
+              alt={movie.original_title}
+            />
+          )
+            : (
+              <Image
+                src={sourceUrl}
+                fallbackSrc="../icons/empty.svg"
+                w={{ base: '100%', xs: width }}
+                alt={movie.original_title}
+              />
+            )}
           <Stack h="100%" w="100%" justify="space-between">
             <Flex direction="row" justify="space-between" gap={8}>
               <NextLink
@@ -109,7 +119,7 @@ export const Movie: React.FC<MovieProps> = ({
                   </Text>
                   <Text lineClamp={1}>
                     {isValueResponse(movieGenres)
-                    && getGenresName(movieGenres, genres).join(', ')}
+                      && getGenresName(movieGenres, genres).join(', ')}
                   </Text>
                 </Flex>
               )}
