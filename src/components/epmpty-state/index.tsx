@@ -1,9 +1,10 @@
+import { useRouter } from 'next/router';
 import {
-  Stack, Title, Image, Button, em,
+  Button, em, Image, Stack, Title,
 } from '@mantine/core';
-import { RoutePath, EmptyState } from '@constants/index';
+import { EmptyState, RoutePath } from '@constants/index';
 import { useMediaQuery } from '@mantine/hooks';
-import router from 'next/router';
+
 import emptyContext from './empty.helper';
 
 type NotFoundComponentProps = {
@@ -19,6 +20,7 @@ const EmptyStateComponent: React.FC<NotFoundComponentProps> = ({
   height = 196,
   justify = 'center',
 }) => {
+  const router = useRouter();
   const isTablet = useMediaQuery(`(max-width: ${em(700)})`);
 
   const isNotFound = status === EmptyState.NotFound;

@@ -1,4 +1,5 @@
 import { FavoriteInfo, Result } from '@typing/index';
+
 import { Movie } from './components/movie';
 
 type MoviesProps = {

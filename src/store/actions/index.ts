@@ -1,7 +1,9 @@
-import {
-  Genre, MovieRequestParams, MovieResponse, FavoriteInfo, MovieDetails,
-} from '@typing/index';
 import { HttpStatusCode } from '@constants/index';
+import {
+  FavoriteInfo, Genre, MovieDetails,
+  MovieRequestParams, MovieResponse,
+} from '@typing/index';
+
 import { AppAction, AppTypes } from '../types';
 
 export const setMovies = (payload: MovieResponse[]): AppAction<MovieResponse[]> => ({
@@ -36,5 +38,10 @@ export const setLoading = (payload: boolean) => ({
 
 export const setError = (payload: HttpStatusCode) => ({
   type: AppTypes.SET_ERROR,
+  payload,
+});
+
+export const setSearchWord = (payload: string) => ({
+  type: AppTypes.KEY_WORD,
   payload,
 });

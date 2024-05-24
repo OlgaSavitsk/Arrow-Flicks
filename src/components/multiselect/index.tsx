@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import {
-  Combobox, Group, Input, PillsInput, useCombobox, ScrollArea,
-} from '@mantine/core';
 import IconChevron from '@components/icon-chevron';
-import { Genre, MovieRequestParams } from '@typing/index';
+import {
+  Combobox, Group, Input, PillsInput, ScrollArea,
+  useCombobox,
+} from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
+import { Genre, MovieRequestParams } from '@typing/index';
 import { selectedGenreKey } from '@utils/index';
-import { PillComponent } from './pill';
 
 import classes from './index.module.css';
+import { PillComponent } from './pill';
 
 type MultiSelectProps = {
   genresList: Genre[],
   label: string,
   placeholder: string,
   form: UseFormReturnType<Partial<MovieRequestParams>>
+  onReset: boolean
 };
 
 const MultiSelectValueRenderer: React.FC<MultiSelectProps> = ({
@@ -22,6 +24,7 @@ const MultiSelectValueRenderer: React.FC<MultiSelectProps> = ({
   label,
   placeholder,
   form,
+  onReset,
 }) => {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -72,7 +75,10 @@ const MultiSelectValueRenderer: React.FC<MultiSelectProps> = ({
   useEffect(() => {
     const genreParams = selectedGenreKey(value, genresList);
     form.setFieldValue('with_genres', genreParams);
-  }, [form, genresList, value]);
+    if (onReset) {
+      setValue([]);
+    }
+  }, [form, genresList, onReset, value]);
 
   return (
     <Combobox

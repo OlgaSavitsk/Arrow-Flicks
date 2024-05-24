@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Modal, Button, Rating, Text, Stack, Flex,
+  Button, Flex, Modal, Rating, Stack, Text,
 } from '@mantine/core';
 import { useFavoriteState } from '@hooks/index';
 import { FavoriteInfo, MovieDetails, Result } from '@typing/index';
@@ -25,6 +25,7 @@ export const ModalComponent: React.FC<MovieProps> = ({
   const onSave = () => {
     if (payload.rating) {
       handleSaveFavorites(payload);
+      close();
     }
   };
 
@@ -67,7 +68,7 @@ export const ModalComponent: React.FC<MovieProps> = ({
           }}
         />
         <Flex gap="md">
-          <Button h={40} size="sm" onClick={onSave}>Save</Button>
+          <Button h={40} size="sm" onClick={onSave} disabled={!payload.rating}>Save</Button>
           <Button
             variant="transparent"
             color="purple.4"

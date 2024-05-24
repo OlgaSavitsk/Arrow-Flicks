@@ -13,6 +13,7 @@ export const initialState: AppState = {
   details: null,
   isLoading: false,
   error: null,
+  keyWord: '',
 };
 
 export const appReducer = <T>(state = initialState, { type, payload }: AppAction<T>) => {
@@ -21,6 +22,7 @@ export const appReducer = <T>(state = initialState, { type, payload }: AppAction
       return {
         ...state,
         movies: payload as MovieResponse,
+        keyWord: '',
         isLoading: false,
       };
     }
@@ -55,6 +57,10 @@ export const appReducer = <T>(state = initialState, { type, payload }: AppAction
 
     case AppTypes.SET_ERROR: {
       return { ...state, error: payload as HttpStatusCode };
+    }
+
+    case AppTypes.KEY_WORD: {
+      return { ...state, keyWord: payload as string };
     }
     default:
       return state;

@@ -1,11 +1,12 @@
 import '@mantine/core/styles.css';
+
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
-import customTheme from '@theme/custom.theme';
-import { ModalsProvider } from '@mantine/modals';
 import { AppProps } from 'next/app';
-import { AppProvider } from '@store/provider';
+import customTheme from '@theme/custom.theme';
 import { AppLayout } from '@components/index';
+import { MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
+import { AppProvider } from '@store/provider';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <MantineProvider theme={customTheme}>

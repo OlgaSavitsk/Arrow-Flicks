@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 import { DEFAULT_STORAGE_CONFIG, LocalStorageKey } from '@constants/index';
-import { FavoriteInfo } from '@typing/index';
 import { appActions } from '@store/index';
-import { useStorage } from './use-storage.hook';
+import { FavoriteInfo } from '@typing/index';
+
 import { useAppContext } from './use-context.hook';
+import { useStorage } from './use-storage.hook';
 
 export const useFavoriteState = () => {
   const [{ favorites }, setValue] = useStorage(

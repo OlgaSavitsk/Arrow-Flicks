@@ -1,8 +1,9 @@
 import { AppShell, Burger, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+
+import PageLayout from '../page-layout';
 import classes from './index.module.css';
 import NavbarComponent from './navbar';
-import PageLayout from '../page-layout';
 
 type MainLayoutProps = {
   children: React.ReactElement

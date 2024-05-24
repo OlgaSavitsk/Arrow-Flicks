@@ -1,6 +1,6 @@
-import { RoutePath } from '@constants/index';
 import NextLink from 'next/link';
 import { Image } from '@mantine/core';
+import { RoutePath } from '@constants/index';
 
 const Logo = () => (
   <NextLink type="router" href={RoutePath.Home}>

@@ -1,13 +1,13 @@
-import { useCallback } from 'react';
-import { YearPickerInput, DatesProvider } from '@mantine/dates';
+import { useCallback, useState } from 'react';
 import { Button, Grid, Select } from '@mantine/core';
+import { DatesProvider, YearPickerInput } from '@mantine/dates';
 import { UseFormReturnType } from '@mantine/form';
-import { IconChevron, MultiSelectValueRenderer } from '@components/index';
-import { MovieRequestParams } from '@typing/index';
-import { useAppContext } from '@hooks/index';
 import { selectOptions } from '@constants/index';
-import RatingComponent from '../rating';
+import { IconChevron, MultiSelectValueRenderer } from '@components/index';
+import { useAppContext } from '@hooks/index';
+import { MovieRequestParams } from '@typing/index';
 
+import RatingComponent from '../rating';
 import classes from './index.module.css';
 
 type FiltersBlockProps = {
@@ -16,9 +16,11 @@ type FiltersBlockProps = {
 
 const FiltersBlock: React.FC<FiltersBlockProps> = ({ form }) => {
   const { state: { genres } } = useAppContext();
+  const [onResetForm, setOnResetForm] = useState(false);
 
   const onResetFilterValue = useCallback(() => {
     form.reset();
+    setOnResetForm(true);
   }, [form]);
 
   return (
@@ -30,6 +32,7 @@ const FiltersBlock: React.FC<FiltersBlockProps> = ({ form }) => {
             placeholder="Select genre"
             genresList={genres}
             form={form}
+            onReset={onResetForm}
           />
         </Grid.Col>
 

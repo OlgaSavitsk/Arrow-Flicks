@@ -1,11 +1,13 @@
 import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { Pagination, Group } from '@mantine/core';
+import { Group, Pagination } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
-import { MovieRequestParams } from '@typing/index';
 import { controlStep, favoritePerPage, initTotalPage } from '@constants/index';
 import { useAppContext } from '@hooks/index';
+import { MovieRequestParams } from '@typing/index';
+import { isArrayWithItems } from '@utils/index';
+
 import { favoriteInitPages, movieInitPages } from './helper';
 
 type PaginationComponentProps = {
@@ -80,13 +82,13 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
   ), [activePage, onPageChangeHandler, pagesCount, totalPages]);
 
   useEffect(() => {
-    if (favorites.length && favorites.length === (activePage - 1) * favoritePerPage) {
+    if (isArrayWithItems(favorites) && favorites.length === (activePage - 1) * favoritePerPage) {
       setPagination((prev) => prev - controlStep);
       if (setPageIndex) {
         setPageIndex(activePage - controlStep);
       }
     }
-  }, [activePage, favorites.length]);
+  }, [activePage, favorites, favorites.length]);
 
   return (
     <Group justify={isFavorite ? 'center' : 'flex-end'}>

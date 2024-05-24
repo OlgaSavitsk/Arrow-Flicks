@@ -1,13 +1,15 @@
-import EmptyStateComponent from '@components/epmpty-state';
-import SearchComponent from '@components/search';
-import { EmptyState } from '@constants/movie';
-import { RoutePath } from '@constants/routes.constants';
-import { useAppContext } from '@hooks/index';
-import {
-  Group, Stack, Title, em,
-} from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
+import { useMediaQuery } from '@mantine/hooks';
+import {
+  em,
+  Group, Stack, Title,
+} from '@mantine/core';
+import { RoutePath } from '@constants/routes.constants';
+import { EmptyState } from '@constants/movie';
+import SearchComponent from '@components/search';
+import EmptyStateComponent from '@components/epmpty-state';
+import { useAppContext } from '@hooks/index';
+import { isArrayWithItems } from '@utils/index';
 
 type PageLayoutProps = {
   children: React.ReactElement
@@ -33,7 +35,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
 
   const { title, action } = titleItems[route as RoutePath] || {};
 
-  const isFavoritesEmpty = !favorites.length && route === RoutePath.Rated;
+  const isFavoritesEmpty = !isArrayWithItems(favorites) && route === RoutePath.Rated;
 
   return (
     isFavoritesEmpty

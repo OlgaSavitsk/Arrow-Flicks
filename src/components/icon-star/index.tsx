@@ -1,5 +1,6 @@
 import {
-  Group, Text, em, rem,
+  em, Group, rem,
+  Text,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { defaultStarColor } from '@constants/index';

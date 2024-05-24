@@ -1,9 +1,9 @@
 import axios, {
-  InternalAxiosRequestConfig,
   AxiosError,
-  AxiosResponse,
-  AxiosRequestConfig,
   AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
 } from 'axios';
 
 const createHeaderConfig = (config: InternalAxiosRequestConfig) => {

@@ -1,4 +1,7 @@
+import '@mantine/dates/styles.css';
+
 import { createTheme } from '@mantine/core';
+
 import {
   ButtonTheme,
   ComboboxTheme,
@@ -7,8 +10,6 @@ import {
   NumberInputTheme,
   TextTheme,
 } from './components';
-import '@mantine/dates/styles.css';
-
 import classes from './index.module.css';
 
 const customTheme = createTheme({
