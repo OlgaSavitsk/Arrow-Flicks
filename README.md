@@ -1,5 +1,23 @@
-# Mantine Next Template
+# Arrow-Flicks project
 
-Get started with the template by clicking `Use this template` button on the top of the page.
+### Deploy: https://arrow-flicks-kappa.vercel.app/
 
-[Documentation](https://mantine.dev/guides/next/)
+## Stack
+- **[Next.js](https://nextjs.org/)**
+- **[React](https://react.dev/)**
+- **[TypeScript](https://www.typescriptlang.org/)**
+- **[Mantine](https://mantine.dev/)**
+
+### Implemented features
+- list of available movies
+- search with filters
+- detailed view of movie
+- rating the film and saving it to the storage
+- favourites movie page
+- search for rated films by their title.
+- loader
+- empty page for not found movies
+- pagination
+- proxy all requests to API
+- validation of filter values on both the client and the server
+- mobile layout
