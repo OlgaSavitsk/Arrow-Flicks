@@ -1,6 +1,6 @@
 import { EmptyState } from '@constants/index';
 
-export const emptyContext = {
+const emptyContext = {
   [EmptyState.EmptyMovie]: {
     src: '../icons/not-found.svg',
     title: 'We don\'t have such movies, look for another one',
@@ -17,3 +17,5 @@ export const emptyContext = {
     button: 'Find movies',
   },
 };
+
+export default emptyContext;

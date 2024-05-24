@@ -5,7 +5,7 @@ import { UseFormReturnType } from '@mantine/form';
 import { IconChevron, MultiSelectValueRenderer } from '@components/index';
 import { MovieRequestParams } from '@typing/index';
 import { useAppContext } from '@hooks/index';
-import { selectOptions } from '../../config/home.config';
+import { selectOptions } from '@constants/index';
 import RatingComponent from '../rating';
 
 import classes from './index.module.css';

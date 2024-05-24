@@ -94,7 +94,7 @@ export const Movie: React.FC<MovieProps> = ({
                   )}
                 </Stack>
               </NextLink>
-              <IconStarButton open={open} targetFavoriteMovie={targetFavoriteMovie} />
+              <IconStarButton open={open} targetFavoriteMovie={targetFavoriteMovie?.rating} />
             </Flex>
             {isDetails
               ? (

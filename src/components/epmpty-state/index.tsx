@@ -4,7 +4,7 @@ import {
 import { RoutePath, EmptyState } from '@constants/index';
 import { useMediaQuery } from '@mantine/hooks';
 import router from 'next/router';
-import { emptyContext } from './empty.helper';
+import emptyContext from './empty.helper';
 
 type NotFoundComponentProps = {
   status: EmptyState,

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Logo from '@components/logo';
-import { MenuItems } from './config/menu-items';
+import MenuItems from './config/menu-items';
 import classes from './index.module.css';
 
 const NavbarComponent = () => {

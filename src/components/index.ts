@@ -9,3 +9,4 @@ export { default as PaginationComponent } from './pagination';
 export { renderMovies } from './movies';
 export { default as ModalComponent } from './modal';
 export { default as EmptyStateComponent } from './epmpty-state';
+export { default as RatingComponent } from './rating';

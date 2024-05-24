@@ -4,10 +4,6 @@ import {
 
 import classes from './index.module.css';
 
-type SearchComponentProps = {
-  children: React.ReactElement
-};
-
 const SearchComponent: React.FC = () => (
   <TextInput
     placeholder="Search movie title"
