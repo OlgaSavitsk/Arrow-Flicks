@@ -6,7 +6,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
         project: './tsconfig.eslint.json',
-        sourceType: 'module'
+        sourceType: 'module',
     },
     plugins: ['react-refresh'],
     rules: {
@@ -26,14 +26,14 @@ module.exports = {
             },
         ],
         '@typescript-eslint/naming-convention': [
+            0,
             {
-              selector: 'variable',
-              format: ['UPPER_CASE'],
-              leadingUnderscore: 'allow',
-              trailingUnderscore: 'allow',
+                selector: 'default',
+                format: ['UPPER_CASE'],
+                leadingUnderscore: 'allow',
+                trailingUnderscore: 'allow',
             },
-          
-          ]
+        ],
     },
     settings: {
         'import/resolver': {

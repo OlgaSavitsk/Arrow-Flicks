@@ -3,10 +3,10 @@ import {
   Modal, Button, Rating, Text, Stack, Flex,
 } from '@mantine/core';
 import { useFavoriteState } from '@hooks/index';
-import { FavoriteInfo, Result } from '@typing/index';
+import { FavoriteInfo, MovieDetails, Result } from '@typing/index';
 
 type MovieProps = {
-  movie: Result
+  movie: Result | MovieDetails
   opened: boolean,
   close: () => void
 };

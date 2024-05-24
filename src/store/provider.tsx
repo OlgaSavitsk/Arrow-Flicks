@@ -17,7 +17,21 @@ export const AppProvider = ({ children }: {
 
   const { params } = state;
 
-  const appProviderValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
+  const fetchDetails = useCallback(async (id: string) => {
+    dispatch(appActions.setLoading(true));
+    try {
+      const { data } = await movieApi.getDetailsMovie(id);
+
+      dispatch(appActions.setMovieDetails(data));
+    } catch (error) {
+      dispatch(appActions.setLoading(false));
+      throw error;
+    }
+  }, []);
+
+  const appProviderValue = useMemo(() => ({
+    state, dispatch, fetchDetails,
+  }), [state, dispatch, fetchDetails]);
 
   const fetchMovies = useCallback(async () => {
     appProviderValue.dispatch(appActions.setLoading(true));

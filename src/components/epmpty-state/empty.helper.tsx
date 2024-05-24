@@ -12,7 +12,7 @@ export const emptyContext = {
     button: 'Go Home',
   },
   [EmptyState.EmptyRate]: {
-    src: '../icons/empty-rate.svg"',
+    src: '../icons/empty-rate.svg',
     title: 'You haven\'t rated any films yet',
     button: 'Find movies',
   },

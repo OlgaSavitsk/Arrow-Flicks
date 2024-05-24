@@ -8,7 +8,7 @@ export function getGenreList() {
   return axios.get('/api/list');
 }
 
-export function getDetailsMovie(id: number) {
+export function getDetailsMovie(id: string) {
   return axios.get(`/api/movie/${id}`);
 }
 

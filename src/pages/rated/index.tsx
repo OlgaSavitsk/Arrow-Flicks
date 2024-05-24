@@ -4,8 +4,9 @@ import { NextPage } from 'next';
 import { renderMovies } from '@components/movies';
 import { useAppContext } from '@hooks/index';
 import PaginationComponent from '@components/pagination';
-import { favoritePerPage } from '@constants/movie';
+import { EmptyState, favoritePerPage } from '@constants/movie';
 import { splitData } from '@utils/split-data.utils';
+import EmptyStateComponent from '@components/epmpty-state';
 
 const RatedPage: NextPage = () => {
   const { state: { favorites } } = useAppContext();
@@ -15,18 +16,23 @@ const RatedPage: NextPage = () => {
   const dataPerPage = data[pageIndex - 1];
 
   return (
-    <>
-      <SimpleGrid
-        cols={{ base: 1, md: 1, lg: 2 }}
-      >
-        {renderMovies({ results: dataPerPage })}
-      </SimpleGrid>
-      <PaginationComponent
-        isFavorite
-        pagesCount={data.length}
-        setPageIndex={setPageIndex}
-      />
-    </>
+    favorites.length
+      ? (
+        <>
+          <SimpleGrid
+            cols={{ base: 1, md: 1, lg: 2 }}
+          >
+            {renderMovies({ results: dataPerPage })}
+          </SimpleGrid>
+          <PaginationComponent
+            isFavorite
+            pagesCount={data.length}
+            setPageIndex={setPageIndex}
+          />
+        </>
+      )
+      : <EmptyStateComponent status={EmptyState.EmptyRate} width={400} />
+
   );
 };
 

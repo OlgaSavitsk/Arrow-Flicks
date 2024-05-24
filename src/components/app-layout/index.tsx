@@ -6,6 +6,7 @@ import MainLayout from './main-layout';
 const pageLayout = {
   [RoutePath.Home]: MainLayout,
   [RoutePath.Rated]: MainLayout,
+  [RoutePath.Details]: MainLayout,
   [RoutePath.NotFound]: NotFoundPage,
 };
 

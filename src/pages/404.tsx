@@ -6,12 +6,12 @@ import {
 } from '@mantine/core';
 
 const NotFoundPage: React.FC = () => (
-  <Container p={24} h="100vh" fluid bg="var(--mantine-color-gray-1)">
+  <Container p={24} h="100vh" fluid bg="gray.1">
     <Group>
       <Logo />
     </Group>
 
-    <EmptyStateComponent status={EmptyState.NotFound} />
+    <EmptyStateComponent status={EmptyState.NotFound} width={656} />
 
   </Container>
 );

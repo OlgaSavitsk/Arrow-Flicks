@@ -20,15 +20,11 @@ type PaginateControl = 'first' | 'previous' | 'last' | 'next';
 const PaginationComponent: React.FC<PaginationComponentProps> = ({
   form,
   isFavorite,
-  pagesCount,
+  pagesCount = 1,
   setPageIndex,
 }) => {
   const [activePage, setPagination] = useState(1);
   const { state: { params, favorites } } = useAppContext();
-
-  if (!pagesCount) {
-    return null
-  }
 
   const onPageChangeHandler = useCallback((currentPage: number) => {
     setPagination(currentPage);
@@ -93,7 +89,7 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
   }, [activePage, favorites.length]);
 
   return (
-    <Group justify={isFavorite ? "center" : "flex-end"}>
+    <Group justify={isFavorite ? 'center' : 'flex-end'}>
       {renderPagination()}
     </Group>
   );

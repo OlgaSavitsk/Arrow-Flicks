@@ -1,5 +1,5 @@
 import {
-  Genre, MovieRequestParams, MovieResponse, FavoriteInfo,
+  Genre, MovieRequestParams, MovieResponse, FavoriteInfo, MovieDetails,
 } from '@typing/index';
 import { HttpStatusCode } from '@constants/index';
 import { AppAction, AppTypes } from '../types';
@@ -16,6 +16,11 @@ export const setParams = (payload?: Partial<MovieRequestParams>) => ({
 
 export const setGenres = (payload: Genre[]) => ({
   type: AppTypes.SET_GENRES,
+  payload,
+});
+
+export const setMovieDetails = (payload: MovieDetails): AppAction<MovieDetails> => ({
+  type: AppTypes.SET_DETAILS,
   payload,
 });
 

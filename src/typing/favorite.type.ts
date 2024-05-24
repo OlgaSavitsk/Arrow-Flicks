@@ -1,5 +1,5 @@
-import { Result } from './movie.types';
+import { MovieDetails, Result } from './movie.types';
 
-export type FavoriteInfo = Result & {
+export type FavoriteInfo = (Result | MovieDetails) & {
   rating: number;
 };

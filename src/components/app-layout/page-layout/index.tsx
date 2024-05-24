@@ -1,5 +1,8 @@
+import EmptyStateComponent from '@components/epmpty-state';
 import SearchComponent from '@components/search';
+import { EmptyState } from '@constants/movie';
 import { RoutePath } from '@constants/routes.constants';
+import { useAppContext } from '@hooks/index';
 import {
   Group, Stack, Title, em,
 } from '@mantine/core';
@@ -19,25 +22,33 @@ const titleItems = {
     title: 'Rated movies',
     action: <SearchComponent />,
   },
+  [RoutePath.Details]: null,
   [RoutePath.NotFound]: null,
 };
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
+  const { state: { favorites } } = useAppContext();
   const { route } = useRouter();
   const isTablet = useMediaQuery(`(max-width: ${em(1370)})`);
 
   const { title, action } = titleItems[route as RoutePath] || {};
 
+  const isFavoritesEmpty = !favorites.length && route === RoutePath.Rated;
+
   return (
-    <Stack pt={40} px={isTablet ? 20 : 90} gap={40}>
-      <Group justify="space-between">
-        <Title fz={32} fw={700}>{title}</Title>
-        {action}
-      </Group>
+    isFavoritesEmpty
+      ? <EmptyStateComponent status={EmptyState.EmptyRate} width={400} />
+      : (
+        <Stack pt={40} px={isTablet ? 20 : 90} gap={40}>
+          <Group justify="space-between">
+            <Title fz={32} fw={700}>{title}</Title>
+            {action}
+          </Group>
 
-      {children}
+          {children}
 
-    </Stack>
+        </Stack>
+      )
   );
 };
 

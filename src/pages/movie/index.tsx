@@ -55,7 +55,7 @@ const HomePage = () => {
     <>
       <FiltersBlock form={form} />
       {isEmptyState
-        ? <EmptyStateComponent status={EmptyState.EmptyMovie} />
+        ? <EmptyStateComponent status={EmptyState.EmptyMovie} height={252} justify="start" />
         : (
           <>
             <SimpleGrid
