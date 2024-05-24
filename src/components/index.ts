@@ -10,3 +10,4 @@ export { renderMovies } from './movies';
 export { default as ModalComponent } from './modal';
 export { default as EmptyStateComponent } from './epmpty-state';
 export { default as RatingComponent } from './rating';
+export { default as LoaderComponent } from './loader';

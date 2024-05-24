@@ -1,12 +1,12 @@
-import {
-  Suspense, useCallback, useEffect, useMemo,
-} from 'react';
+import { Fragment, useCallback, useEffect } from 'react';
 import { useAppContext } from '@hooks/index';
 import { MovieRequestParams, VoteAvrg } from '@typing/index';
 import { SimpleGrid } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { appActions } from '@store/index';
-import { EmptyStateComponent, PaginationComponent, renderMovies } from '@components/index';
+import {
+  EmptyStateComponent, PaginationComponent, renderMovies, LoaderComponent,
+} from '@components/index';
 import { EmptyState } from '@constants/index';
 import { rateFilterValidator } from '@utils/index';
 import FiltersBlock from '@components/filters-block';
@@ -23,11 +23,11 @@ const initialValues = {
 };
 
 const HomePage = () => {
-  const { dispatch, state: { movies, error } } = useAppContext();
+  const { dispatch, state: { movies, error, isLoading } } = useAppContext();
 
-  const data = useMemo(() => (movies || null), [movies]);
+  const { results, total_pages } = { ...movies };
 
-  const isEmptyState = !!error || (data && data.results?.length === 0);
+  const isEmptyState = !!error || results?.length === 0;
 
   const form = useForm<Partial<MovieRequestParams>>({
     initialValues,
@@ -54,25 +54,23 @@ const HomePage = () => {
   }, [setParams]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       <FiltersBlock form={form} />
       {isEmptyState
         ? <EmptyStateComponent status={EmptyState.EmptyMovie} height={252} justify="start" />
         : (
-
-          data && (
-            <>
-              <SimpleGrid
-                cols={{ base: 1, md: 1, lg: 2 }}
-              >
-                {renderMovies({ results: data.results })}
-              </SimpleGrid>
-              <PaginationComponent pagesCount={data.total_pages} form={form} />
-            </>
-          )
-
+          <>
+            <SimpleGrid
+              cols={{ base: 1, md: 1, lg: 2 }}
+              pos="relative"
+            >
+              {renderMovies({ results })}
+              <LoaderComponent isLoading={isLoading} />
+            </SimpleGrid>
+            <PaginationComponent pagesCount={total_pages} form={form} />
+          </>
         )}
-    </Suspense>
+    </>
   );
 };
 
