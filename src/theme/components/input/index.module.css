@@ -1,0 +1,13 @@
+.input {
+    font-size: var(--mantine-font-size-sm);
+    line-height: calc(1rem * var(--mantine-line-height-md));
+    
+    &:focus,
+    &:focus-within {
+        border: rem(1.5px) solid var(--mantine-color-purple-4);
+    }
+
+    &:hover {
+        border-color: var(--mantine-color-purple-4);
+    }
+}

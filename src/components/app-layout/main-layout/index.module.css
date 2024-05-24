@@ -1,0 +1,10 @@
+.main {
+    padding: calc(var(--mantine-spacing-lg) * 4.5);
+    padding-top: calc(var(--mantine-spacing-lg) * 2);
+}
+
+.dropdown {
+  position: absolute;
+  top: rem(10);
+  right: 0;
+}

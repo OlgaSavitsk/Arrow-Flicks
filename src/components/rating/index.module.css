@@ -1,0 +1,27 @@
+.wrapper {
+    position: relative;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.controls {
+    border: none;
+
+    & button {
+        display: flex;
+        align-items: flex-end;
+        border: none;
+        stroke: var(--mantine-color-gray-5);
+        stroke-width: 1px;
+    }
+
+    & button:last-of-type {
+        align-items: flex-start;
+    }
+}
+
+.error {
+    position: absolute;
+    font-size: var(--mantine-font-size-xs);
+    color: var(--mantine-color-pink-7);
+}

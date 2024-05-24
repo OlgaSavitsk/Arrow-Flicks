@@ -1,0 +1,17 @@
+.root {
+  width: rem(490)
+}
+
+.input {
+  height: rem(48)
+}
+
+.section {
+  
+  &[data-position='right'] {
+    --section-size: rem(100);
+
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,15 @@
+.input {
+    &[data-expanded] ~ div svg,
+    &[aria-expanded='true'] ~ div svg {
+        transform: rotate(180deg);
+        & path {
+            stroke: var(--mantine-color-purple-4);
+        }
+    }
+}
+
+.option {
+    &[data-checked] > svg {
+        display: none;
+    }
+}

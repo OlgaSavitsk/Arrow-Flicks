@@ -1,0 +1,5 @@
+.rating-text {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+}

@@ -1,0 +1,6 @@
+.root {
+
+    &[data-variant="transparent"]:active {
+        color: var(--mantine-color-purple-5)
+    }
+}

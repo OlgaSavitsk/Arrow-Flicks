@@ -1,0 +1,16 @@
+.option {
+    font-size: var(--mantine-font-size-sm);
+
+    &:hover {
+        background-color: var(--mantine-color-purple-0);
+        color: var(--mantine-color-black);
+    }
+    &[data-combobox-active] {
+        background-color: var(--mantine-color-purple-4);
+        color: var(--mantine-color-white);
+    }
+}
+
+.input {
+    font-size: var(--mantine-font-size-sm);
+}
